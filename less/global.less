@@ -1,0 +1,249 @@
+html,
+body {
+  position: relative;
+  background-color: #ddd;
+  height: 100%;
+
+  padding: 0;
+  margin: 0;
+
+  font-family: Calibri, Arial, sans-serif;
+  font-size: 10px;
+
+  -webkit-font-smoothing: antialiased;
+
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: moz-none;
+  -ms-user-select: none;
+  user-select: none;
+
+}
+
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+input {
+  height: 30px;
+  line-height: 30px;
+  color: #666;
+  padding: 0;
+  border: none;
+  font-size: 2em;
+
+  &:focus,
+  &:active {
+    outline: 0;
+    box-shadow: none;
+  }
+}
+
+header {
+  margin: 0 25px;
+  input {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+#main {
+
+  background-color: white;
+  max-width: 300px;
+  min-height: 100%;
+
+  padding: 25px 0;
+  margin: 0 auto;
+
+  .weather {
+
+    position: relative;
+    height: 200px;
+
+    .frame {
+
+      position: relative;
+      width: 250px;
+      height: 200px;
+      margin: 0 auto;
+      text-align: center;
+
+      overflow: hidden;
+
+      ul {
+        list-style: none;
+        height: 200px;
+        padding: 0;
+        margin: 0;
+      }
+
+      .glyph {
+
+        float: left;
+        position: relative;
+        width: 250px;
+        height: 200px;
+        margin:  0 auto;
+
+        [type=checkbox] {
+          .ui-helper-hidden-accessible;
+        }
+
+        .climacon {
+          position: absolute;
+          left: 50%; top: 50%;
+          width: 250px;
+          height: 200px;
+          line-height: 250px;
+          margin: -125px 0 0 -125px;
+          font-size: 15em;
+        }
+
+        .title {
+          width: 100%;
+          display: block;
+          position: absolute;
+          left: 0; bottom: 0;
+          text-align: center;
+          font-size: 2.5em;
+        }
+      }
+    }
+  }
+
+  .temperature {
+
+    position: relative;
+    height: 140px;
+
+    .frame {
+
+      position: relative;
+      width: 250px;
+      height: 140px;
+      margin: 0 auto;
+
+      font-size: 10em;
+      text-align: center;
+      letter-spacing: -.1em;
+
+      .glyph .thermometer {
+        position: relative;
+        top: 10px;
+        height: 140px;
+        line-height: 140px;
+        margin-right: 10px;
+      }
+
+      .glyph .celcius {
+        position: relative;
+        top: -5px;
+        height: 140px;
+        line-height: 140px;
+      }
+    }
+  }
+}
+
+
+.touch-start {
+  background-color: rgba(0,0,255,.2);
+}
+
+.touch-move {
+  background-color: rgba(0,255,0,.2);
+}
+
+.touch-move-left {
+  background-color: rgba(255,0,0,.2);
+}
+
+.touch-move-right {
+  background-color: rgba(255,255,0,.2);
+}
+
+.prev,
+.next {
+
+  display: block;
+  position: absolute;
+  top: 50%;
+
+  width: 40px;
+  height: 40px;
+  border-radius: 6px;
+  margin: -20px 5px 0;
+
+  .ui-icon {
+    content: '';
+    display: block;
+    position: absolute;
+    left: 50%; top: 50%;
+    width: 15px;
+    height: 25px;
+    margin: -12.5px 0 0 -7.5px;
+
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  &:hover,
+  &:focus {
+    background-color: #ddd;
+  }
+}
+
+.prev {
+  left: 0;
+  .ui-icon {
+    background-image: url(../img/icn/arrow-left.png)
+
+  }
+}
+
+.next {
+  right: 0;
+  .ui-icon {
+    background-image: url(../img/icn/arrow-right.png)
+  }
+}
+
+#ui-datepicker-div {
+
+  background-color: white;
+  border: 1px solid #666;
+  border-radius: 4px;
+  font-size: 1.4em;
+
+  .ui-datepicker-prev,
+  .ui-datepicker-next {
+    overflow: hidden;
+    .ui-icon {
+      width: 0;
+      height: 0;
+      border: 9px solid transparent;
+      text-indent: -9999em;
+    }
+  }
+
+  .ui-datepicker-prev {
+    .ui-icon {
+      border-right-color: #666;
+    }
+  }
+
+  .ui-datepicker-next {
+    .ui-icon {
+      border-left-color: #666;
+    }
+  }
+}
+
+.ui-helper-hidden-accessible {
+  position: absolute;
+  left: -9999em;
+}

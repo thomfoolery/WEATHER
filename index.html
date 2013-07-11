@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Weather</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+        <link rel="stylesheet" href="css/styles.css">
+        <script src="js/vendor/modernizr-2.6.2.min.js"></script>
+    </head>
+    <body>
+        <!--[if lt IE 8]><p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p><![endif]-->
+
+        <div id="main" class="layout-constraint">
+
+            <header>
+                <input type="text" id="location" name="location" placeholder="Location"    value="Toronto Ontario, Canada">
+                <input type="text" id="date"     name="date"     placeholder="Pick a date" class="date-picker">
+            </header>
+
+            <div class="weather">
+                <div class="frame">
+
+                    <input type="hidden" id="weather-value" name="weather-value" value="">
+
+                    <ul>
+
+                        <li class="glyph">
+                            <span class="climacon sun" aria-hidden="true"></span>
+                            <span class="title">Sunny</span>
+                        </li>
+
+                        <li class="glyph">
+                            <span class="climacon haze" aria-hidden="true"></span>
+                            <span class="title">Hazy</span>
+                        </li>
+
+                        <li class="glyph">
+                            <span class="climacon cloud" aria-hidden="true"></span>
+                            <span class="title">Cloudy</span>
+                        </li>
+
+                        <li class="glyph">
+                            <span class="climacon fog" aria-hidden="true"></span>
+                            <span class="title">Foggy</span>
+                        </li>
+
+                        <li class="glyph">
+                            <span class="climacon lightning" aria-hidden="true"></span>
+                            <span class="title">Lightning</span>
+                        </li>
+
+                        <li class="glyph">
+                            <span class="climacon sun drizzle" aria-hidden="true"></span>
+                            <span class="title">Drizzle</span>
+                        </li>
+
+                        <li class="glyph">
+                            <span class="climacon sun showers" aria-hidden="true"></span>
+                            <span class="title">Showers</span>
+                        </li>
+
+                        <li class="glyph">
+                            <span class="climacon rain" aria-hidden="true"></span>
+                            <span class="title">Rain</span>
+                        </li>
+
+                        <li class="glyph">
+                            <span class="climacon downpour" aria-hidden="true"></span>
+                            <span class="title">Downpour</span>
+                        </li>
+
+                        <li class="glyph">
+                            <span class="climacon sleet" aria-hidden="true"></span>
+                            <span class="title">Sleet</span>
+                        </li>
+
+                        <li class="glyph">
+                            <span class="climacon snow" aria-hidden="true"></span>
+                            <span class="title">Snow</span>
+                        </li>
+
+                        <li class="glyph">
+                            <span class="climacon hail" aria-hidden="true"></span>
+                            <span class="title">Hail</span>
+                        </li>
+
+                        <li class="glyph">
+                            <span class="climacon tornado" aria-hidden="true"></span>
+                            <span class="title">Tornado</span>
+                        </li>
+
+                    </ul>
+
+                </div>
+
+                <a href="#" class="prev">
+                    <span class="ui-icon"></span>
+                </a>
+                <a href="#" class="next">
+                    <span class="ui-icon"></span>
+                </a>
+
+            </div>
+
+            <div class="temperature">
+                <div class="frame">
+
+                    <input type="hidden" id="tamp-value" name="temp-value" value="0">
+
+                    <span class="glyph">
+                        <span class="climacon climacon thermometer medium-high" aria-hidden="true"></span>
+                    </span>
+
+                    <span class="value" data-min="-50" data-max="50"></span>
+
+                    <span class="glyph">
+                        <span class="climacon celcius" aria-hidden="true"></span>
+                    </span>
+
+                </div>
+
+                <a href="#" class="prev">
+                    <span class="ui-icon"></span>
+                </a>
+                <a href="#" class="next">
+                    <span class="ui-icon"></span>
+                </a>
+
+            </div>
+
+            <footer>
+
+            </footer>
+
+        </div>
+
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.0/jquery-ui.min.js"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-ui-1.10.3.custom.min.js"><\/script>')</script>
+
+        <script src="js/plugins.js"></script>
+        <script src="js/main.js"></script>
+
+        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID.
+        <script>
+            (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+            function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+            e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+            e.src='//www.google-analytics.com/analytics.js';
+            r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+            ga('create','UA-XXXXX-X');ga('send','pageview');
+        </script>
+        -->
+    </body>
+</html>

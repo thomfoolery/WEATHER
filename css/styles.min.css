@@ -1,0 +1,203 @@
+@font-face{font-family:'Climacons-Font';src:url('../fonts/climacons-webfont.eot');src:url('../fonts/climacons-webfont.eot?#iefix') format('embedded-opentype'),url('../fonts/climacons-webfont.svg#Climacons-Font') format('svg'),url('../fonts/climacons-webfont.woff') format('woff'),url('../fonts/climacons-webfont.ttf') format('truetype');font-weight:normal;font-style:normal;}.climacon:before{font-family:'Climacons-Font';speak:none;font-style:normal;font-weight:normal;line-height:1;-webkit-font-smoothing:antialiased;}
+.climacon.cloud:before{content:"\e000";}
+.climacon.cloud.sun:before{content:"\e001";}
+.climacon.cloud.moon:before{content:"\e002";}
+.climacon.rain:before,.climacon.rain.cloud:before{content:"\e003";}
+.climacon.rain.sun:before,.climacon.rain.cloud.sun:before{content:"\e004";}
+.climacon.rain.moon:before,.climacon.rain.cloud.moon:before{content:"\e005";}
+.climacon.showers:before,.climacon.showers.cloud:before{content:"\e006";}
+.climacon.showers.sun:before,.climacon.showers.cloud.sun:before{content:"\e007";}
+.climacon.showers.moon:before,.climacon.showers.cloud.moon:before{content:"\e008";}
+.climacon.downpour:before,.climacon.downpour.cloud:before{content:"\e009";}
+.climacon.downpour.sun:before,.climacon.downpour.cloud.sun:before{content:"\e00a";}
+.climacon.downpour.moon:before,.climacon.downpour.cloud.moon:before{content:"\e00b";}
+.climacon.drizzle:before,.climacon.drizzle.cloud:before{content:"\e00c";}
+.climacon.drizzle.sun:before,.climacon.drizzle.cloud.sun:before{content:"\e00d";}
+.climacon.drizzle.moon:before,.climacon.drizzle.cloud.moon:before{content:"\e00e";}
+.climacon.sleet:before,.climacon.sleet.cloud:before{content:"\e00f";}
+.climacon.sleet.sun:before,.climacon.sleet.cloud.sun:before{content:"\e010";}
+.climacon.sleet.moon:before,.climacon.sleet.cloud.moon:before{content:"\e011";}
+.climacon.hail:before,.climacon.hail.cloud:before{content:"\e012";}
+.climacon.hail.sun:before,.climacon.hail.cloud.sun:before{content:"\e013";}
+.climacon.hail.moon:before,.climacon.hail.cloud.moon:before{content:"\e014";}
+.climacon.flurries:before,.climacon.flurries.cloud:before{content:"\e015";}
+.climacon.flurries.sun:before,.climacon.flurries.cloud.sun:before{content:"\e016";}
+.climacon.flurries.moon:before,.climacon.flurries.cloud.moon:before{content:"\e017";}
+.climacon.snow:before,.climacon.snow.cloud:before{content:"\e018";}
+.climacon.snow.sun:before,.climacon.snow.cloud.sun:before{content:"\e019";}
+.climacon.snow.moon:before,.climacon.snow.cloud.moon:before{content:"\e01a";}
+.climacon.fog:before,.climacon.fog.cloud:before{content:"\e01b";}
+.climacon.fog.sun:before,.climacon.fog.cloud.sun:before{content:"\e01c";}
+.climacon.fog.moon:before,.climacon.fog.cloud.moon:before{content:"\e01d";}
+.climacon.haze:before{content:"\e01e";}
+.climacon.haze.sun:before{content:"\e01f";}
+.climacon.haze.moon:before{content:"\e020";}
+.climacon.wind:before{content:"\e021";}
+.climacon.wind.cloud:before{content:"\e022";}
+.climacon.wind.sun:before,.climacon.wind.cloud.sun:before{content:"\e023";}
+.climacon.wind.moon:before,.climacon.wind.cloud.moon:before{content:"\e024";}
+.climacon.lightning:before,.climacon.lightning.cloud:before{content:"\e025";}
+.climacon.lightning.sun:before,.climacon.lightning.cloud.sun:before{content:"\e026";}
+.climacon.lightning.moon:before,.climacon.lightning.cloud.moon:before{content:"\e027";}
+.climacon.sun:before{content:"\e028";}
+.climacon.sun.set:before,.climacon.sunset:before{content:"\e029";}
+.climacon.sun.rise:before,.climacon.sunrise:before{content:"\e02a";}
+.climacon.sun.low:before,.climacon.sun-low:before,.climacon.low-sun:before{content:"\e02b";}
+.climacon.sun.lower:before,.climacon.sun-lower:before,.climacon.lower-sun:before{content:"\e02c";}
+.climacon.moon:before{content:"\e02d";}
+.climacon.moon.new:before{content:"\e02e";}
+.climacon.moon.waxing.crescent:before,.climacon.moon.first-crescent:before{content:"\e02f";}
+.climacon.moon.waxing.quarter:before,.climacon.moon.first-quarter:before,.climacon.moon.waxing.half:before,.climacon.moon.first-half:before{content:"\e030";}
+.climacon.moon.waxing.gibbous:before,.climacon.moon.first-gibbous:before,.climacon.moon.waxing.three-quarter:before,.climacon.moon.first-three-quarter:before{content:"\e031";}
+.climacon.moon.full:before{content:"\e032";}
+.climacon.moon.waning.gibbous:before,.climacon.moon.last-gibbous:before,.climacon.moon.waning.three-quarter:before,.climacon.moon.last-three-quarter:before{content:"\e033";}
+.climacon.moon.waning.quarter:before,.climacon.moon.last-quarter:before,.climacon.moon.waning.half:before,.climacon.moon.last-half:before{content:"\e034";}
+.climacon.moon.waning.crescent:before,.climacon.moon.last-crescent:before{content:"\e035";}
+.climacon.snowflake:before{content:"\e036";}
+.climacon.tornado:before{content:"\e037";}
+.climacon.thermometer.empty:before,.climacon.thermometer:before{content:"\e038";}
+.climacon.thermometer.low:before{content:"\e039";}
+.climacon.thermometer.medium-low:before{content:"\e03a";}
+.climacon.thermometer.medium-high:before{content:"\e03b";}
+.climacon.thermometer.high:before{content:"\e03c";}
+.climacon.thermometer.full:before{content:"\e03d";}
+.climacon.celcius:before{content:"\e03e";}
+.climacon.farenheit:before{content:"\e03f";}
+.climacon.compass:before{content:"\e040";}
+.climacon.compass.north:before{content:"\e041";}
+.climacon.compass.east:before{content:"\e042";}
+.climacon.compass.south:before{content:"\e043";}
+.climacon.compass.west:before{content:"\e044";}
+.climacon.umbrella:before{content:"\e045";}
+.climacon.sunglasses:before{content:"\e046";}
+.climacon.cloud.cycle:before,.climacon.cloud.refresh:before{content:"\e047";}
+.climacon.cloud.down:before,.climacon.cloud.download:before{content:"\e048";}
+.climacon.cloud.up:before,.climacon.cloud.upload:before{content:"\e049";}
+article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section,summary{display:block;}
+audio,canvas,video{display:inline-block;*display:inline;*zoom:1;}
+audio:not([controls]){display:none;height:0;}
+[hidden]{display:none;}
+html{font-size:100%;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;}
+html,button,input,select,textarea{font-family:sans-serif;}
+body{margin:0;}
+a:focus{outline:thin dotted;}
+a:active,a:hover{outline:0;}
+h1{font-size:2em;margin:0.67em 0;}
+h2{font-size:1.5em;margin:0.83em 0;}
+h3{font-size:1.17em;margin:1em 0;}
+h4{font-size:1em;margin:1.33em 0;}
+h5{font-size:0.83em;margin:1.67em 0;}
+h6{font-size:0.67em;margin:2.33em 0;}
+abbr[title]{border-bottom:1px dotted;}
+b,strong{font-weight:bold;}
+blockquote{margin:1em 40px;}
+dfn{font-style:italic;}
+hr{-moz-box-sizing:content-box;box-sizing:content-box;height:0;}
+mark{background:#ff0;color:#000;}
+p,pre{margin:1em 0;}
+code,kbd,pre,samp{font-family:monospace, serif;_font-family:'courier new',monospace;font-size:1em;}
+pre{white-space:pre;white-space:pre-wrap;word-wrap:break-word;}
+q{quotes:none;}
+q:before,q:after{content:'';content:none;}
+small{font-size:80%;}
+sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline;}
+sup{top:-0.5em;}
+sub{bottom:-0.25em;}
+dl,menu,ol,ul{margin:1em 0;}
+dd{margin:0 0 0 40px;}
+menu,ol,ul{padding:0 0 0 40px;}
+nav ul,nav ol{list-style:none;list-style-image:none;}
+img{border:0;-ms-interpolation-mode:bicubic;}
+svg:not(:root){overflow:hidden;}
+figure{margin:0;}
+form{margin:0;}
+fieldset{border:1px solid #c0c0c0;margin:0 2px;padding:0.35em 0.625em 0.75em;}
+legend{border:0;padding:0;white-space:normal;*margin-left:-7px;}
+button,input,select,textarea{font-size:100%;margin:0;vertical-align:baseline;*vertical-align:middle;}
+button,input{line-height:normal;}
+button,select{text-transform:none;}
+button,html input[type="button"],input[type="reset"],input[type="submit"]{-webkit-appearance:button;cursor:pointer;*overflow:visible;}
+button[disabled],html input[disabled]{cursor:default;}
+input[type="checkbox"],input[type="radio"]{box-sizing:border-box;padding:0;*height:13px;*width:13px;}
+input[type="search"]{-webkit-appearance:textfield;-moz-box-sizing:content-box;-webkit-box-sizing:content-box;box-sizing:content-box;}
+input[type="search"]::-webkit-search-cancel-button,input[type="search"]::-webkit-search-decoration{-webkit-appearance:none;}
+button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0;}
+textarea{overflow:auto;vertical-align:top;}
+table{border-collapse:collapse;border-spacing:0;}
+html,button,input,select,textarea{color:#222;}
+body{font-size:1em;line-height:1.4;}
+::-moz-selection{background:#b3d4fc;text-shadow:none;}
+::selection{background:#b3d4fc;text-shadow:none;}
+hr{display:block;height:1px;border:0;border-top:1px solid #ccc;margin:1em 0;padding:0;}
+audio,canvas,img,video{vertical-align:middle;}
+fieldset{border:0;margin:0;padding:0;}
+textarea{resize:vertical;}
+.browsehappy{margin:0.2em 0;background:#ccc;color:#000;padding:0.2em 0;}
+.ir{background-color:transparent;border:0;overflow:hidden;*text-indent:-9999px;}
+.ir:before{content:"";display:block;width:0;height:150%;}
+.hidden{display:none !important;visibility:hidden;}
+.visuallyhidden{border:0;clip:rect(0 0 0 0);height:1px;margin:-1px;overflow:hidden;padding:0;position:absolute;width:1px;}
+.visuallyhidden.focusable:active,.visuallyhidden.focusable:focus{clip:auto;height:auto;margin:0;overflow:visible;position:static;width:auto;}
+.invisible{visibility:hidden;}
+.clearfix:before,.clearfix:after{content:" ";display:table;}
+.clearfix:after{clear:both;}
+.clearfix{*zoom:1;}
+@media only screen and (min-width:35em){}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important;} a,a:visited{text-decoration:underline;} a[href]:after{content:" (" attr(href) ")";} abbr[title]:after{content:" (" attr(title) ")";} .ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:"";} pre,blockquote{border:1px solid #999;page-break-inside:avoid;} thead{display:table-header-group;} tr,img{page-break-inside:avoid;} img{max-width:100% !important;} @page {margin:0.5cm;}p,h2,h3{orphans:3;widows:3;} h2,h3{page-break-after:avoid;}}.ui-helper-hidden{display:none;}
+.ui-helper-hidden-accessible{border:0;clip:rect(0 0 0 0);height:1px;margin:-1px;overflow:hidden;padding:0;position:absolute;width:1px;}
+input.ui-button::-moz-focus-inner,button.ui-button::-moz-focus-inner{border:0;padding:0;}
+.ui-datepicker{width:17em;padding:.2em .2em 0;display:none;}
+.ui-datepicker .ui-datepicker-header{position:relative;padding:.2em 0;}
+.ui-datepicker .ui-datepicker-prev,.ui-datepicker .ui-datepicker-next{position:absolute;top:2px;width:1.8em;height:1.8em;}
+.ui-datepicker .ui-datepicker-prev-hover,.ui-datepicker .ui-datepicker-next-hover{top:1px;}
+.ui-datepicker .ui-datepicker-prev{left:2px;}
+.ui-datepicker .ui-datepicker-next{right:2px;}
+.ui-datepicker .ui-datepicker-prev-hover{left:1px;}
+.ui-datepicker .ui-datepicker-next-hover{right:1px;}
+.ui-datepicker .ui-datepicker-prev span,.ui-datepicker .ui-datepicker-next span{display:block;position:absolute;left:50%;margin-left:-8px;top:50%;margin-top:-8px;}
+.ui-datepicker .ui-datepicker-title{margin:0 2.3em;line-height:1.8em;text-align:center;}
+.ui-datepicker .ui-datepicker-title select{font-size:1em;margin:1px 0;}
+.ui-datepicker select.ui-datepicker-month-year{width:100%;}
+.ui-datepicker select.ui-datepicker-month,.ui-datepicker select.ui-datepicker-year{width:49%;}
+.ui-datepicker table{width:100%;font-size:.9em;border-collapse:collapse;margin:0 0 .4em;}
+.ui-datepicker th{padding:.7em .3em;text-align:center;font-weight:bold;border:0;}
+.ui-datepicker td{border:0;padding:1px;}
+.ui-datepicker td span,.ui-datepicker td a{display:block;padding:.2em;text-align:right;text-decoration:none;}
+.ui-datepicker .ui-datepicker-buttonpane{background-image:none;margin:.7em 0 0 0;padding:0 .2em;border-left:0;border-right:0;border-bottom:0;}
+.ui-datepicker .ui-datepicker-buttonpane button{float:right;margin:.5em .2em .4em;cursor:pointer;padding:.2em .6em .3em .6em;width:auto;overflow:visible;}
+.ui-datepicker .ui-datepicker-buttonpane button.ui-datepicker-current{float:left;}
+.ui-datepicker.ui-datepicker-multi{width:auto;}
+.ui-datepicker-multi .ui-datepicker-group{float:left;}
+.ui-datepicker-multi .ui-datepicker-group table{width:95%;margin:0 auto .4em;}
+.ui-datepicker-multi-2 .ui-datepicker-group{width:50%;}
+.ui-datepicker-multi-3 .ui-datepicker-group{width:33.3%;}
+.ui-datepicker-multi-4 .ui-datepicker-group{width:25%;}
+.ui-datepicker-multi .ui-datepicker-group-last .ui-datepicker-header,.ui-datepicker-multi .ui-datepicker-group-middle .ui-datepicker-header{border-left-width:0;}
+.ui-datepicker-multi .ui-datepicker-buttonpane{clear:left;}
+.ui-datepicker-row-break{clear:both;width:100%;font-size:0;}
+.ui-datepicker-rtl{direction:rtl;}
+.ui-datepicker-rtl .ui-datepicker-prev{right:2px;left:auto;}
+.ui-datepicker-rtl .ui-datepicker-next{left:2px;right:auto;}
+.ui-datepicker-rtl .ui-datepicker-prev:hover{right:1px;left:auto;}
+.ui-datepicker-rtl .ui-datepicker-next:hover{left:1px;right:auto;}
+.ui-datepicker-rtl .ui-datepicker-buttonpane{clear:right;}
+.ui-datepicker-rtl .ui-datepicker-buttonpane button{float:left;}
+.ui-datepicker-rtl .ui-datepicker-buttonpane button.ui-datepicker-current,.ui-datepicker-rtl .ui-datepicker-group{float:right;}
+.ui-datepicker-rtl .ui-datepicker-group-last .ui-datepicker-header,.ui-datepicker-rtl .ui-datepicker-group-middle .ui-datepicker-header{border-right-width:0;border-left-width:1px;}
+html,body{position:relative;background-color:#ddd;height:100%;padding:0;margin:0;font-family:Calibri,Arial,sans-serif;font-size:10px;-webkit-font-smoothing:antialiased;}
+*{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;}
+input{height:30px;line-height:30px;color:#666;padding:0;border:none;font-size:2em;}input:focus,input:active{outline:0;box-shadow:none;}
+header{margin:0 25px;}header input{width:100%;text-align:center;}
+#main{background-color:white;max-width:300px;min-height:100%;padding:25px 0;margin:0 auto;}#main .weather{position:relative;height:200px;}#main .weather .frame{position:relative;width:250px;height:200px;margin:0 auto;text-align:center;overflow:hidden;}#main .weather .frame ul{list-style:none;height:200px;padding:0;margin:0;}
+#main .weather .frame .glyph{float:left;position:relative;width:250px;height:200px;margin:0 auto;}#main .weather .frame .glyph [type=checkbox]{border:0;clip:rect(0 0 0 0);height:1px;margin:-1px;overflow:hidden;padding:0;position:absolute;width:1px;position:absolute;left:-9999em;}
+#main .weather .frame .glyph .climacon{position:absolute;left:50%;top:50%;width:250px;height:200px;line-height:250px;margin:-125px 0 0 -125px;font-size:15em;}
+#main .weather .frame .glyph .title{width:100%;display:block;position:absolute;left:0;bottom:0;text-align:center;font-size:2.5em;}
+#main .temperature{position:relative;height:140px;}#main .temperature .frame{position:relative;width:250px;height:140px;margin:0 auto;font-size:10em;text-align:center;letter-spacing:-0.1em;}#main .temperature .frame .glyph .thermometer{position:relative;top:10px;height:140px;line-height:140px;margin-right:10px;}
+#main .temperature .frame .glyph .celcius{position:relative;top:-5px;height:140px;line-height:140px;}
+.prev,.next{display:block;position:absolute;top:50%;width:40px;height:40px;border-radius:6px;margin-top:-20px;}.prev .ui-icon,.next .ui-icon{content:'';display:block;position:absolute;left:50%;top:50%;width:0;height:0;border-style:solid;border-color:transparent;margin:-8px 0 0 -3px;}
+.prev:hover,.next:hover,.prev:focus,.next:focus{background-color:#ddd;}
+.prev{left:0;}.prev .ui-icon{border-width:8px 12px 8px 0;border-right-color:black;}
+.next{right:0;}.next .ui-icon{border-width:8px 0 8px 12px;border-left-color:black;}
+#ui-datepicker-div{background-color:white;border:1px solid #666;border-radius:4px;font-size:1.4em;}#ui-datepicker-div .ui-datepicker-prev,#ui-datepicker-div .ui-datepicker-next{overflow:hidden;}#ui-datepicker-div .ui-datepicker-prev .ui-icon,#ui-datepicker-div .ui-datepicker-next .ui-icon{width:0;height:0;border:9px solid transparent;text-indent:-9999em;}
+#ui-datepicker-div .ui-datepicker-prev .ui-icon{border-right-color:#666;}
+#ui-datepicker-div .ui-datepicker-next .ui-icon{border-left-color:#666;}
+.ui-helper-hidden-accessible{position:absolute;left:-9999em;}
