@@ -16,129 +16,161 @@
     <body>
         <!--[if lt IE 8]><p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p><![endif]-->
 
-        <div id="main" class="layout-constraint">
+        <header>
+            <div id="date-input-wrapper" class="input-wrapper">
+                <input type="text" id="location" name="location"
+                       placeholder="Fetching location..."
+                       required readonly />
+            </div>
+        </header>
 
-            <header>
-                <input type="text" id="location" name="location" placeholder="Location"    value="Toronto Ontario, Canada">
-                <input type="text" id="date"     name="date"     placeholder="Pick a date" class="date-picker">
-            </header>
+        <div id="main" class="layout-constraint"></div>
 
-            <div class="weather">
-                <div class="frame">
+        <footer>
+            <button class="prev">
+                Previous
+                <span class="ui-icon"></span>
+            </button>
+            <button class="next">
+                Next
+                <span class="ui-icon"></span>
+            </button>
+        </footer>
 
-                    <input type="hidden" id="weather-value" name="weather-value" value="">
+        <script id="card-template" type="text/html">
+            <div class="card">
 
-                    <ul>
+                <div id="location-input-wrapper" class="input-wrapper">
+                    <input type="text" id="date" name="date"
+                           placeholder="Fetching Location..."
+                           value="{{ date || '' }}"
+                           required readonly />
+                </div>
 
-                        <li class="glyph">
-                            <span class="climacon sun" aria-hidden="true"></span>
-                            <span class="title">Sunny</span>
-                        </li>
+                <div class="weather-selector">
+                    <div class="frame">
 
-                        <li class="glyph">
-                            <span class="climacon haze" aria-hidden="true"></span>
-                            <span class="title">Hazy</span>
-                        </li>
+                        <input type="hidden" id="weather-value" name="weather-value" value="">
 
-                        <li class="glyph">
-                            <span class="climacon cloud" aria-hidden="true"></span>
-                            <span class="title">Cloudy</span>
-                        </li>
+                        <ul>
 
-                        <li class="glyph">
-                            <span class="climacon fog" aria-hidden="true"></span>
-                            <span class="title">Foggy</span>
-                        </li>
+                            <li class="glyph">
+                                <span class="climacon sun" aria-hidden="true"></span>
+                                <span class="title">Sunny</span>
+                            </li>
 
-                        <li class="glyph">
-                            <span class="climacon lightning" aria-hidden="true"></span>
-                            <span class="title">Lightning</span>
-                        </li>
+                            <li class="glyph">
+                                <span class="climacon haze" aria-hidden="true"></span>
+                                <span class="title">Hazy</span>
+                            </li>
 
-                        <li class="glyph">
-                            <span class="climacon sun drizzle" aria-hidden="true"></span>
-                            <span class="title">Drizzle</span>
-                        </li>
+                            <li class="glyph">
+                                <span class="climacon cloud" aria-hidden="true"></span>
+                                <span class="title">Cloudy</span>
+                            </li>
 
-                        <li class="glyph">
-                            <span class="climacon sun showers" aria-hidden="true"></span>
-                            <span class="title">Showers</span>
-                        </li>
+                            <li class="glyph">
+                                <span class="climacon fog" aria-hidden="true"></span>
+                                <span class="title">Foggy</span>
+                            </li>
 
-                        <li class="glyph">
-                            <span class="climacon rain" aria-hidden="true"></span>
-                            <span class="title">Rain</span>
-                        </li>
+                            <li class="glyph">
+                                <span class="climacon lightning" aria-hidden="true"></span>
+                                <span class="title">Thunderstorm</span>
+                            </li>
 
-                        <li class="glyph">
-                            <span class="climacon downpour" aria-hidden="true"></span>
-                            <span class="title">Downpour</span>
-                        </li>
+                            <li class="glyph">
+                                <span class="climacon sun drizzle" aria-hidden="true"></span>
+                                <span class="title">Drizzle</span>
+                            </li>
 
-                        <li class="glyph">
-                            <span class="climacon sleet" aria-hidden="true"></span>
-                            <span class="title">Sleet</span>
-                        </li>
+                            <li class="glyph">
+                                <span class="climacon sun showers" aria-hidden="true"></span>
+                                <span class="title">Showers</span>
+                            </li>
 
-                        <li class="glyph">
-                            <span class="climacon snow" aria-hidden="true"></span>
-                            <span class="title">Snow</span>
-                        </li>
+                            <li class="glyph">
+                                <span class="climacon rain" aria-hidden="true"></span>
+                                <span class="title">Rain</span>
+                            </li>
 
-                        <li class="glyph">
-                            <span class="climacon hail" aria-hidden="true"></span>
-                            <span class="title">Hail</span>
-                        </li>
+                            <li class="glyph">
+                                <span class="climacon downpour" aria-hidden="true"></span>
+                                <span class="title">Downpour</span>
+                            </li>
 
-                        <li class="glyph">
-                            <span class="climacon tornado" aria-hidden="true"></span>
-                            <span class="title">Tornado</span>
-                        </li>
+                            <li class="glyph">
+                                <span class="climacon sleet" aria-hidden="true"></span>
+                                <span class="title">Sleet</span>
+                            </li>
 
-                    </ul>
+                            <li class="glyph">
+                                <span class="climacon snow" aria-hidden="true"></span>
+                                <span class="title">Snow</span>
+                            </li>
+
+                            <li class="glyph">
+                                <span class="climacon hail" aria-hidden="true"></span>
+                                <span class="title">Hail</span>
+                            </li>
+
+                            <li class="glyph">
+                                <span class="climacon tornado" aria-hidden="true"></span>
+                                <span class="title">Tornado</span>
+                            </li>
+
+                        </ul>
+
+                    </div>
+
+                    <button class="prev">
+                        Previous
+                        <span class="ui-icon"></span>
+                    </button>
+                    <button class="next">
+                        Next
+                        <span class="ui-icon"></span>
+                    </button>
 
                 </div>
 
-                <a href="#" class="prev">
-                    <span class="ui-icon"></span>
-                </a>
-                <a href="#" class="next">
-                    <span class="ui-icon"></span>
-                </a>
+                <div class="temperature-selector">
+                    <div class="frame">
 
-            </div>
+                        <input type="hidden" id="tamp-value" name="temp-value" value="0">
 
-            <div class="temperature">
-                <div class="frame">
+                        <span class="glyph">
+                            <span class="climacon climacon thermometer medium-high" aria-hidden="true"></span>
+                        </span>
 
-                    <input type="hidden" id="tamp-value" name="temp-value" value="0">
+                        <span class="value" data-min="-50" data-max="50"></span>
 
-                    <span class="glyph">
-                        <span class="climacon climacon thermometer medium-high" aria-hidden="true"></span>
-                    </span>
+                        <span class="glyph">
+                            <span class="climacon celcius" aria-hidden="true"></span>
+                        </span>
 
-                    <span class="value" data-min="-50" data-max="50"></span>
+                    </div>
 
-                    <span class="glyph">
-                        <span class="climacon celcius" aria-hidden="true"></span>
-                    </span>
+                    <button class="prev">
+                        Previous
+                        <span class="ui-icon"></span>
+                    </button>
+                    <button class="next">
+                        Next
+                        <span class="ui-icon"></span>
+                    </button>
 
                 </div>
 
-                <a href="#" class="prev">
-                    <span class="ui-icon"></span>
-                </a>
-                <a href="#" class="next">
-                    <span class="ui-icon"></span>
-                </a>
+                <button type="submit" class="ui-btn save">
+                    <span class="glyph">
+                        <span class="climacon cloud up" aria-hidden="true"></span>
+                    </span>
+                    Save
+                </button>
 
             </div>
-
-            <footer>
-
-            </footer>
-
-        </div>
+        </script>
 
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
         <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.0/jquery-ui.min.js"></script>

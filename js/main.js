@@ -1,269 +1,107 @@
-var $location = $('input#location')
-  , $date     = $('input#date')
+var _W = {};
 
-  , $weather = $('.weather')
-  , $temp    = $('.temperature')
-  ;
+_.templateSettings = {
+  evaluate : /\{\[([\s\S]+?)\]\}/g,
+  interpolate : /\{\{(.+?)\}\}/g // mustache templating style
+};
 
-// WEATHER
-$weather.each( function ( index, el ) {
-
-  var $container = $( el )
-    , $input     = $container.find('input')
-    , $frame     = $container.find('.frame')
-    , $ul        = $frame.find('ul')
-    , $glyphs    = $ul.find('.glyph')
-
-    , $prev      = $container.find('.prev')
-    , $next      = $container.find('.next')
-
-    , index      = 0
-    , width      = $glyphs.width() * $glyphs.size()
-    ;
-
-  $ul.width( width );
-
-  $prev.click( prev );
-  $next.click( next );
-
-  $frame.bind('mousewheel DOMMouseScroll MozMousePixelScroll', onScroll );
-
-  if ( Modernizr.touch ) {
-
-    $frame.bind('scroll', function ( e ) {
-      e.preventDefault();
-      e.stopPropagation();
-    });
-
-    $frame.bind('touchstart', onTouchstart );
-    $frame.bind('touchmove',  onTouchmove );
-    $frame.bind('touchend',   onTouchend );
-  }
-
-  function prev ( e ) {
-    if ( e ) e.preventDefault();
-    if ( $frame.is(':animated') ) return; // EXIT
-    if ( index <= 0 )
-      index = $glyphs.size() -1;
-    else
-      index --;
-    goto( index );
-  }
-
-  function next ( e ) {
-    if ( e ) e.preventDefault();
-    if ( $frame.is(':animated') ) return; // EXIT
-    if ( index >= $glyphs.size() -1 )
-      index = 0;
-    else
-      index ++;
-    goto( index );
-  }
-
-  function goto ( index ) {
-
-    $input.val( $glyphs.eq( index ).find('.title').text() );
-    $frame.animate({ "scrollLeft": $glyphs.width() * index }, 100 );
-  }
-
-  function onScroll ( e ) {
-
-    var dir = null;
-
-    e.preventDefault();
-    e.stopPropagation();
-
-    if ( e.originalEvent.wheelDelta || e.originalEvent.detail )
-      dir = e.originalEvent.wheelDelta || -e.originalEvent.detail;
-    if ( dir < 0 )
-      next();
-    else if ( dir > 0 )
-      prev();
-  }
-
-  var firstTouch           = null
-    , startingScrollOffset = null
-    , maxOffset            = width - $glyphs.width()
-    ;
-
-  function onTouchstart ( e ) {
-
-    $frame.addClass('touch-start');
-
-    firstTouch           = e.changedTouches[0];
-    startingScrollOffset = $frame.scrollLeft();
-  }
-
-  function onTouchmove ( e ) {
-
-    $frame.addClass('touch-move');
-    $frame.removeClass('touch-move-left touch-move-right');
-
-    currentTouch = e.changedTouches[0];
-    slide( firstTouch.pageX - currentTouch.pageX );
-  }
-
-  function onTouchend ( e ) {
-
-    $frame.removeClass('touch-start touch-move touch-move-left touch-move-right');
-
-    firstTouch           = null;
-    startingScrollOffset = null;
-  }
-
-  function slide ( diff ) {
-
-    if ( diff > 0 )
-      $frame.addClass('touch-move-left');
-    if ( diff < 0 )
-      $frame.addClass('touch-move-right');
-
-    var scrollLeft = startingScrollOffset + diff;
-
-    if ( scrollLeft < 0 )
-      scrollLeft = 0;
-    else if ( scrollLeft > maxOffset )
-      scrollLeft = maxOffset;
-
-    $frame.scrollLeft( scrollLeft );
-  }
-
+$.ajaxSetup({
+  "cache": true,
+  "crossDomain": true
 });
 
+$.when(
 
-// TEMP
-$temp.each( function ( index, el ) {
+    $.getScript('/js/location.js'),
+    $.getScript('/js/date.js'),
+    $.getScript('/js/weather.js'),
+    $.getScript('/js/temperature.js')
 
-  var $container = $( el )
-    , $input     = $container.find('input')
-    , $frame     = $container.find('.frame')
-    , $value     = $frame.find('.value')
-    , $therm     = $frame.find('.glyph .thermometer')
+  ).then(
 
-    , $prev      = $container.find('.prev')
-    , $next      = $container.find('.next')
+  function () {
 
-    , value      = 0
-    , max        = $value.data('max')
-    , min        = $value.data('min')
-    ;
+    var $main  = $('#main')
+      , $card
+      , $cards
 
-  $prev.click( prev );
-  $next.click( next );
+      , width         = 0
+      , padding       = 0
 
-  $frame.bind('mousewheel DOMMouseScroll MozMousePixelScroll', onScroll );
+      , index         = 0
+      , today         = new Date()
+      , date_string   = ''
+      , card_template = _.template( $('#card-template').html() )
+      ;
 
-  if ( Modernizr.touch ) {
+    $card = createCard( today );
+    width += $card.addClass('active').outerWidth( true );
 
-    $frame.bind('scroll', function ( e ) {
-      e.preventDefault();
-      e.stopPropagation();
-    });
+    for ( var i = 0; i < 6; i++ ) {
 
-    $frame.bind('touchstart', onTouchstart );
-    $frame.bind('touchmove',  onTouchmove );
-    $frame.bind('touchend',   onTouchend );
+      today.setDate( today.getDate() +1 );
+      $card = createCard( today );
+      width += $card.outerWidth( true );
+    }
+
+    $cards  = $('.card');
+    padding = ( $( window ).width() / 2 ) - ( $card.width() / 2 );
+
+    $main.width( width + padding *2 );
+    $main.css('paddingLeft',  padding + 'px');
+    $main.css('paddingRight', padding + 'px');
+
+    $('footer .prev').click( prev );
+    $('footer .next').click( next );
+
+    function createCard ( date ) {
+
+      var $card = $(
+            card_template({
+              "date": date,
+              "location": _W.Location.getLocation()
+            })
+          );
+
+      $('#main').append( $card );
+
+      _W.WeatherSelector(     $card.find('.weather-selector')     );
+      _W.TemperatureSelector( $card.find('.temperature-selector') );
+
+      return $card;
+    }
+
+    function prev ( e ) {
+      if ( e ) e.preventDefault();
+      if ( $main.is(':animated') ) return; // EXIT
+      if ( index <= 0 )
+        index = $cards.size() -1;
+      else
+        index --;
+      goto( index );
+    }
+
+    function next ( e ) {
+      if ( e ) e.preventDefault();
+      if ( $main.is(':animated') ) return; // EXIT
+      if ( index >= $cards.size() -1 )
+        index = 0;
+      else
+        index ++;
+      goto( index );
+    }
+
+    function goto ( index ) {
+
+      $('.card.active').removeClass('active');
+      $cards.eq( index ).addClass('active');
+      $main.animate({"marginLeft": - $card.outerWidth( true ) * index });
+    }
+
+    $( window ).resize( onResize ).resize();
+    function onResize () {
+      var paddingTop = Math.max( ( $( window ).height() - $card.outerHeight( true ) ) / 2, 50 );
+      $main.css('paddingTop', paddingTop + 'px');
+    }
   }
-
-  goto ( value );
-
-  function prev ( e ) {
-    if ( e ) e.preventDefault();
-    if ( value <= min )
-      return;
-    else
-      value --;
-    goto( value );
-  }
-
-  function next ( e ) {
-    if ( e ) e.preventDefault();
-    if ( value >= max )
-      return;
-    else
-      value ++;
-    goto( value );
-  }
-
-  function goto ( value ) {
-
-    $input.val(  value );
-    $value.text( value );
-
-    $therm.removeClass('low medium-low medium-high high full');
-    if ( value > -40 && value <= -20 )
-      $therm.addClass('low');
-    else if ( value > -20 && value <= 0 )
-      $therm.addClass('medium-low');
-    else if ( value > 0 && value <= 10 )
-      $therm.addClass('medium-high');
-    else if ( value > 10 && value <= 30 )
-      $therm.addClass('high');
-    else if ( value > 30 && value <= 50 )
-      $therm.addClass('full');
-  }
-
-  function onScroll ( e ) {
-
-    var dir = null;
-
-    e.preventDefault();
-    e.stopPropagation();
-
-    if ( e.originalEvent.wheelDelta || e.originalEvent.detail )
-      dir = e.originalEvent.wheelDelta || -e.originalEvent.detail;
-    if ( dir < 0 )
-      next();
-    else if ( dir > 0 )
-      prev();
-  }
-
-  var firstTouch           = null
-    , startingScrollOffset = null
-    ;
-
-  function onTouchstart ( e ) {
-
-    $frame.addClass('touch-start');
-
-    firstTouch           = e.changedTouches[0];
-    startingScrollOffset = $frame.scrollLeft();
-  }
-
-  function onTouchmove ( e ) {
-
-    $frame.addClass('touch-move');
-
-    currentTouch = e.changedTouches[0];
-    // slide( firstTouch.pageX - currentTouch.pageX );
-  }
-
-  function onTouchend ( e ) {
-
-    $frame.removeClass('touch-start touch-move');
-
-    firstTouch           = null;
-    startingScrollOffset = null;
-  }
-});
-
-$location.focus( function ( e ) {
-
-  var $target = $( e.target );
-
-  if ( $target.val() )
-    $target.data('value', $target.val() );
-
-  $target.val('');
-});
-
-$location.blur( function ( e ) {
-
-  var $target = $( e.target );
-  $target.val( $target.data('value') );
-});
-
-
-$('.date-picker').datepicker({
-  "dateFormat": 'DD, d MM, yy'
-});
+);
