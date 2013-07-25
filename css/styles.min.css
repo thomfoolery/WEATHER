@@ -192,9 +192,9 @@ footer{position:fixed;left:50%;bottom:0;width:300px;height:50px;margin-left:-150
 .ui-btn{display:inline-block;background-color:#ddd;border:none;border-radius:6px;padding:0 20px;font-size:2em;text-align:center;vertical-align:middle;}.ui-btn .glyph{margin-right:5px;font-size:2em;vertical-align:middle;}
 .ui-btn.save{display:block;width:150px;padding:5px 20px 0;margin:50px auto;}
 .ui-btn:hover{background-color:#ccc;}
-.card{float:left;position:relative;background-color:white;max-width:300px;min-height:100%;padding:25px 0;margin:0 25px 0 0;}.card .input-wrapper{margin:0 25px;}.card .input-wrapper input{width:100%;text-align:center;}
+.card{float:left;position:relative;background-color:white;max-width:300px;min-height:100%;padding:25px 0;margin:0 25px 0 0;-webkit-transform:scale(0.8);-webkit-transition:-webkit-transform 0.5s linear;}.card .input-wrapper{margin:0 25px;}.card .input-wrapper input{width:100%;text-align:center;}
 .card:after{content:'';position:absolute;left:0;top:0;width:100%;height:100%;background-color:rgba(0, 0, 0, 0.5);}
-.card.active:after{display:none;}
+.card.active{-webkit-transform:scale(1);}.card.active:after{display:none;}
 #main{min-height:100%;margin:0 auto;}#main .weather-selector{position:relative;height:200px;}#main .weather-selector .frame{position:relative;width:250px;height:200px;margin:0 auto;text-align:center;overflow:hidden;}#main .weather-selector .frame ul{list-style:none;height:200px;padding:0;margin:0;}
 #main .weather-selector .frame .glyph{float:left;position:relative;width:250px;height:200px;margin:0 auto;}#main .weather-selector .frame .glyph [type=checkbox]{border:0;clip:rect(0 0 0 0);height:1px;margin:-1px;overflow:hidden;padding:0;position:absolute;width:1px;position:absolute;left:-9999em;}
 #main .weather-selector .frame .glyph .climacon{position:absolute;left:50%;top:50%;width:250px;height:200px;line-height:250px;margin:-125px 0 0 -125px;font-size:15em;}

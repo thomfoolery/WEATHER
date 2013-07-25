@@ -34,14 +34,13 @@ $.when(
       , card_template = _.template( $('#card-template').html() )
       ;
 
-    $card = createCard( today );
-    width += $card.addClass('active').outerWidth( true );
-
-    for ( var i = 0; i < 6; i++ ) {
-
+    for ( var i = 0; i < 7; i++ ) {
       today.setDate( today.getDate() +1 );
       $card = createCard( today );
       width += $card.outerWidth( true );
+
+      if ( i == 0 )
+        $card.addClass('active');
     }
 
     $cards  = $('.card');
