@@ -1192,11 +1192,13 @@ html,
 body {
   position: relative;
   background-color: #ddd;
+  width: 100%;
   height: 100%;
   padding: 0;
   margin: 0;
   font-family: Calibri, Arial, sans-serif;
   font-size: 10px;
+  overflow: hidden;
   -webkit-font-smoothing: antialiased;
   -webkit-touch-callout: none;
   -webkit-user-select: none;
@@ -1206,10 +1208,8 @@ body {
   user-select: none;
 }
 body {
-  width: 100%;
   background: url(http://www.bigpicture.in/wp-content/uploads/2011/01/LandscapePhotographsOfBeautifulRoads10_002.jpg) center no-repeat;
   background-size: cover;
-  overflow: hidden;
 }
 * {
   -webkit-box-sizing: border-box;
@@ -1219,7 +1219,7 @@ body {
 input {
   height: 30px;
   line-height: 30px;
-  color: #666;
+  color: black;
   padding: 0;
   border: none;
   font-size: 2em;
@@ -1237,9 +1237,9 @@ header {
   position: fixed;
   left: 50%;
   top: 20px;
-  width: 350px;
+  width: 300px;
   height: 50px;
-  margin: 0 0 0 -175px;
+  margin: 0 0 0 -150px;
 }
 header input {
   display: block;
@@ -1304,20 +1304,19 @@ footer .next {
 .card {
   float: left;
   position: relative;
-  background-color: white;
+  background-color: #666;
   max-width: 300px;
   min-height: 100%;
   padding: 25px 0;
   border-radius: 6px;
   margin: 0 25px 0 0;
-  -webkit-transform: scale(0.8);
-  -webkit-transition: -webkit-transform 0.25s linear;
 }
 .card .input-wrapper {
   margin: 0 25px;
 }
 .card .input-wrapper input {
   width: 100%;
+  background-color: transparent;
   text-align: center;
 }
 .card:after {
@@ -1327,11 +1326,15 @@ footer .next {
   top: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  border-radius: 6px;
+}
+.card .ui-btn {
+  background-color: #555;
 }
 .card.active {
-  -webkit-transform: scale(1);
+  background-color: white;
+}
+.card.active .ui-btn {
+  background-color: #ddd;
 }
 .card.active:after {
   display: none;
@@ -1340,6 +1343,10 @@ footer .next {
   min-height: 550px;
   margin: 0 auto;
   overflow: hidden;
+  -webkit-transition: -webkit-transform 0.25s linear;
+  -moz-transition: -moz-transform 0.25s linear;
+  -ms-transition: -ms-transform 0.25s linear;
+  transition: transform .25s linear;
 }
 #main .weather-selector {
   position: relative;
@@ -1348,22 +1355,26 @@ footer .next {
 #main .weather-selector .frame {
   position: relative;
   width: 250px;
-  height: 200px;
+  height: 100%;
   margin: 0 auto;
   text-align: center;
   overflow: hidden;
 }
 #main .weather-selector .frame ul {
   list-style: none;
-  height: 200px;
+  height: 100%;
   padding: 0;
   margin: 0;
+  -webkit-transition: -webkit-transform 0.25s linear;
+  -moz-transition: -moz-transform 0.25s linear;
+  -ms-transition: -ms-transform 0.25s linear;
+  transition: transform .25s linear;
 }
 #main .weather-selector .frame .glyph {
   float: left;
   position: relative;
   width: 250px;
-  height: 200px;
+  height: 100%;
   margin: 0 auto;
 }
 #main .weather-selector .frame .glyph [type=checkbox] {
@@ -1383,7 +1394,7 @@ footer .next {
   left: 50%;
   top: 50%;
   width: 250px;
-  height: 200px;
+  height: 100%;
   line-height: 250px;
   margin: -125px 0 0 -125px;
   font-size: 15em;
@@ -1399,12 +1410,12 @@ footer .next {
 }
 #main .temperature-selector {
   position: relative;
-  height: 140px;
+  height: 150px;
 }
 #main .temperature-selector .frame {
   position: relative;
   width: 250px;
-  height: 140px;
+  height: 100%;
   margin: 0 auto;
   font-size: 10em;
   text-align: center;
@@ -1505,4 +1516,54 @@ footer .next {
 .ui-helper-hidden-accessible {
   position: absolute;
   left: -9999em;
+}
+@media only screen and (max-width: 600px) {
+  header {
+    top: 10px;
+  }
+  #main .card {
+    background-color: white;
+    padding: 10px 0;
+  }
+  #main .card #date-input-wrapper {
+    margin-bottom: -10px;
+  }
+  #main .card .weather-selector {
+    height: 130px;
+    margin-bottom: -30px;
+  }
+  #main .card .weather-selector .frame .glyph .climacon {
+    font-size: 9em;
+  }
+  #main .card .temperature-selector {
+    height: 100px;
+  }
+  #main .card .temperature-selector .frame {
+    font-size: 8em;
+  }
+  #main .card .ui-btn.save {
+    background-color: #ddd;
+    margin: 10px auto;
+  }
+  #main .card .ui-btn.save .glyph {
+    font-size: 2em;
+  }
+  #main .card:after {
+    display: none;
+  }
+  footer {
+    position: fixed;
+    left: 50%;
+    bottom: 0;
+    margin: 0 0 10px -150px;
+  }
+}
+@media only screen and (min-width: 600px) {
+  #main .card {
+    -webkit-transform: scale(0.8);
+    -webkit-transition: -webkit-transform 0.25s linear;
+  }
+  #main .card.active {
+    -webkit-transform: scale(1);
+  }
 }

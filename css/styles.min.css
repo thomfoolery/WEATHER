@@ -183,24 +183,24 @@ input.ui-button::-moz-focus-inner,button.ui-button::-moz-focus-inner{border:0;pa
 .ui-datepicker-rtl .ui-datepicker-buttonpane button{float:left;}
 .ui-datepicker-rtl .ui-datepicker-buttonpane button.ui-datepicker-current,.ui-datepicker-rtl .ui-datepicker-group{float:right;}
 .ui-datepicker-rtl .ui-datepicker-group-last .ui-datepicker-header,.ui-datepicker-rtl .ui-datepicker-group-middle .ui-datepicker-header{border-right-width:0;border-left-width:1px;}
-html,body{position:relative;background-color:#ddd;height:100%;padding:0;margin:0;font-family:Calibri,Arial,sans-serif;font-size:10px;-webkit-font-smoothing:antialiased;-webkit-touch-callout:none;-webkit-user-select:none;-khtml-user-select:none;-moz-user-select:moz-none;-ms-user-select:none;user-select:none;}
-body{width:100%;background:url(http://www.bigpicture.in/wp-content/uploads/2011/01/LandscapePhotographsOfBeautifulRoads10_002.jpg) center no-repeat;background-size:cover;overflow:hidden;}
+html,body{position:relative;background-color:#ddd;width:100%;height:100%;padding:0;margin:0;font-family:Calibri,Arial,sans-serif;font-size:10px;overflow:hidden;-webkit-font-smoothing:antialiased;-webkit-touch-callout:none;-webkit-user-select:none;-khtml-user-select:none;-moz-user-select:moz-none;-ms-user-select:none;user-select:none;}
+body{background:url(http://www.bigpicture.in/wp-content/uploads/2011/01/LandscapePhotographsOfBeautifulRoads10_002.jpg) center no-repeat;background-size:cover;}
 *{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;}
 input{height:30px;line-height:30px;color:#666;padding:0;border:none;font-size:2em;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;-ms-box-sizing:border-box;box-sizing:border-box;}input:focus,input:active{outline:0;box-shadow:none;}
-header{position:fixed;left:50%;top:20px;width:100%;}header input{display:block;width:400px;height:50px;line-height:50px;border-radius:6px;margin:0 0 0 -200px;text-align:center;text-overflow:ellipsis;overflow:hidden;}
-header button{position:absolute;background-color:white;right:0;width:50px;height:50px;border-radius:6px;font-size:4em;text-align:center;}
-footer{position:relative;width:300px;height:50px;margin:20px auto;}footer .prev,footer .next{background-color:white;}
-.ui-btn{display:inline-block;background-color:#ddd;border:none;border-radius:6px;padding:0 20px;font-size:2em;text-align:center;vertical-align:middle;}.ui-btn .glyph{margin-right:5px;font-size:2em;vertical-align:middle;}
-.ui-btn.save{display:block;width:150px;padding:5px 20px 0;margin:20px auto;}
+header{position:fixed;left:50%;top:20px;width:350px;height:50px;margin:0 0 0 -175px;}header input{display:block;width:100%;height:50px;line-height:50px;border-radius:6px;text-align:center;text-overflow:ellipsis;overflow:hidden;}
+header button{position:absolute;background-color:white;right:0;top:0;width:50px;height:50px;border:none;border-radius:6px;font-size:4em;text-align:center;}
+footer{position:relative;width:300px;height:50px;margin:20px auto;}footer .prev,footer .next{background-color:white;margin:-20px 0 0;}
+.ui-btn{display:inline-block;background-color:#ddd;border:none;border-radius:6px;padding:0 20px;font-size:2em;text-align:center;vertical-align:middle;}.ui-btn .glyph{font-size:3em;vertical-align:middle;}
+.ui-btn.save{display:block;width:150px;padding:0 20px;margin:20px auto;}.ui-btn.save .glyph{position:relative;top:5px;}
 .ui-btn:hover{background-color:#ccc;}
 .card{float:left;position:relative;background-color:white;max-width:300px;min-height:100%;padding:25px 0;border-radius:6px;margin:0 25px 0 0;-webkit-transform:scale(0.8);-webkit-transition:-webkit-transform 0.25s linear;}.card .input-wrapper{margin:0 25px;}.card .input-wrapper input{width:100%;text-align:center;}
 .card:after{content:'';position:absolute;left:0;top:0;width:100%;height:100%;background-color:rgba(0, 0, 0, 0.5);border-radius:6px;}
 .card.active{-webkit-transform:scale(1);}.card.active:after{display:none;}
-#main{margin:0 auto;overflow:hidden;}#main .weather-selector{position:relative;height:200px;}#main .weather-selector .frame{position:relative;width:250px;height:200px;margin:0 auto;text-align:center;overflow:hidden;}#main .weather-selector .frame ul{list-style:none;height:200px;padding:0;margin:0;}
-#main .weather-selector .frame .glyph{float:left;position:relative;width:250px;height:200px;margin:0 auto;}#main .weather-selector .frame .glyph [type=checkbox]{border:0;clip:rect(0 0 0 0);height:1px;margin:-1px;overflow:hidden;padding:0;position:absolute;width:1px;position:absolute;left:-9999em;}
-#main .weather-selector .frame .glyph .climacon{position:absolute;left:50%;top:50%;width:250px;height:200px;line-height:250px;margin:-125px 0 0 -125px;font-size:15em;}
+#main{min-height:550px;margin:0 auto;overflow:hidden;}#main .weather-selector{position:relative;height:200px;}#main .weather-selector .frame{position:relative;width:250px;height:100%;margin:0 auto;text-align:center;overflow:hidden;}#main .weather-selector .frame ul{list-style:none;height:100%;padding:0;margin:0;}
+#main .weather-selector .frame .glyph{float:left;position:relative;width:250px;height:100%;margin:0 auto;}#main .weather-selector .frame .glyph [type=checkbox]{border:0;clip:rect(0 0 0 0);height:1px;margin:-1px;overflow:hidden;padding:0;position:absolute;width:1px;position:absolute;left:-9999em;}
+#main .weather-selector .frame .glyph .climacon{position:absolute;left:50%;top:50%;width:250px;height:100%;line-height:250px;margin:-125px 0 0 -125px;font-size:15em;}
 #main .weather-selector .frame .glyph .title{width:100%;display:block;position:absolute;left:0;bottom:0;text-align:center;font-size:2.5em;}
-#main .temperature-selector{position:relative;height:140px;}#main .temperature-selector .frame{position:relative;width:250px;height:140px;margin:0 auto;font-size:10em;text-align:center;letter-spacing:-0.1em;}#main .temperature-selector .frame .glyph .thermometer{position:relative;top:10px;height:140px;line-height:140px;margin-right:10px;}
+#main .temperature-selector{position:relative;height:150px;}#main .temperature-selector .frame{position:relative;width:250px;height:100%;margin:0 auto;font-size:10em;text-align:center;letter-spacing:-0.1em;}#main .temperature-selector .frame .glyph .thermometer{position:relative;top:10px;height:140px;line-height:140px;margin-right:10px;}
 #main .temperature-selector .frame .glyph .celcius{position:relative;top:-5px;height:140px;line-height:140px;}
 .touch-start{background-color:rgba(0, 0, 255, 0.2);}
 .touch-move{background-color:rgba(0, 255, 0, 0.2);}
@@ -214,3 +214,4 @@ footer{position:relative;width:300px;height:50px;margin:20px auto;}footer .prev,
 #ui-datepicker-div .ui-datepicker-prev .ui-icon{border-right-color:#666;}
 #ui-datepicker-div .ui-datepicker-next .ui-icon{border-left-color:#666;}
 .ui-helper-hidden-accessible{position:absolute;left:-9999em;}
+@media only screen and (max-width:600px){#main .card{padding:20px 0;}#main .card .weather-selector{height:150px;}#main .card .weather-selector .frame .glyph .climacon{font-size:10em;} #main .card .tempurature-selector{height:120px;}}

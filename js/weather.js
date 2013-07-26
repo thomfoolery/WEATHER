@@ -73,7 +73,11 @@ _W.WeatherSelector = {};
             window.localStorage.setItem( dataKey, value );
 
           $input.val( value );
-          $frame.animate({ "scrollLeft": $glyphs.width() * index }, 100 );
+
+          if ( Modernizr.touch )
+            $ul.css('marginLeft', ( - $glyphs.width() * index ) + 'px');
+          else
+            $ul.css( _W.cssPrefix.css + 'transform', 'translateX(' + ( - $glyphs.width() * index ) + 'px)');
         }
 
         function onScroll ( e ) {

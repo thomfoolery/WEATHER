@@ -1,4 +1,24 @@
-var _W = {};
+var _W = {
+  "cssPrefix": (function () { // IIF
+    // exit if IE8
+    if ( ! window.getComputedStyle ) return '';
+
+    var styles = window.getComputedStyle(document.documentElement, '')
+      , pre = (Array.prototype.slice
+          .call(styles)
+          .join('')
+          .match(/-(moz|webkit|ms)-/) || (styles.OLink === '' && ['', 'o'])
+        )[1]
+      , dom = ('WebKit|Moz|MS|O').match(new RegExp('(' + pre + ')', 'i'))[1];
+
+    return {
+      "dom":       dom,
+      "lowercase": pre,
+      "css":       '-' + pre + '-',
+      "js":        pre[0].toUpperCase() + pre.substr(1)
+    };
+  })()
+};
 
 _.templateSettings = {
   evaluate : /\{\[([\s\S]+?)\]\}/g,
@@ -91,9 +111,9 @@ $.when(
 
     function goto ( index ) {
 
-      $('.card.active').removeClass('active');
+      $cards.filter('.active').removeClass('active');
       $cards.eq( index ).addClass('active');
-      $main.animate({"marginLeft": - $card.outerWidth( true ) * index });
+      $main.css( _W.cssPrefix.css + 'transform', 'translateX(' + ( - $card.outerWidth( true ) * index ) + 'px)');
     }
 
     function onScroll ( e ) {
