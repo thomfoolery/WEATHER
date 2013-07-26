@@ -12,10 +12,10 @@ $.ajaxSetup({
 
 $.when(
 
-    $.getScript('/js/location.js'),
-    $.getScript('/js/date.js'),
-    $.getScript('/js/weather.js'),
-    $.getScript('/js/temperature.js')
+    $.getScript('js/location.js'),
+    $.getScript('js/date.js'),
+    $.getScript('js/weather.js'),
+    $.getScript('js/temperature.js')
 
   ).then(
 
@@ -30,7 +30,6 @@ $.when(
 
       , index         = 0
       , today         = new Date()
-      , date_string   = ''
       , card_template = _.template( $('#card-template').html() )
       ;
 
@@ -44,14 +43,11 @@ $.when(
     }
 
     $cards  = $('.card');
-    padding = ( $( window ).width() / 2 ) - ( $card.width() / 2 );
-
-    $main.width( width + padding *2 );
-    $main.css('paddingLeft',  padding + 'px');
-    $main.css('paddingRight', padding + 'px');
 
     $('footer .prev').click( prev );
     $('footer .next').click( next );
+
+    $('body').bind('mousewheel DOMMouseScroll MozMousePixelScroll', onScroll );
 
     function createCard ( date ) {
 
@@ -60,12 +56,15 @@ $.when(
               "date": date,
               "location": _W.Location.getLocation()
             })
-          );
+          )
+
+        , dataKey = date.getFullYear() + '-' + ( date.getMonth() +1 ) + '-' + date.getDate();
+        ;
 
       $('#main').append( $card );
 
-      _W.WeatherSelector(     $card.find('.weather-selector')     );
-      _W.TemperatureSelector( $card.find('.temperature-selector') );
+      _W.WeatherSelector(     $card.find('.weather-selector')    , 'weather.'     + dataKey );
+      _W.TemperatureSelector( $card.find('.temperature-selector'), 'temperature.' + dataKey );
 
       return $card;
     }
@@ -97,10 +96,33 @@ $.when(
       $main.animate({"marginLeft": - $card.outerWidth( true ) * index });
     }
 
+    function onScroll ( e ) {
+
+      var dir = null;
+
+      e.preventDefault();
+      e.stopPropagation();
+
+      if ( e.originalEvent.wheelDelta || e.originalEvent.detail )
+        dir = e.originalEvent.wheelDelta || -e.originalEvent.detail;
+      if ( dir < 0 )
+        next();
+      else if ( dir > 0 )
+        prev();
+    }
+
     $( window ).resize( onResize ).resize();
     function onResize () {
-      var paddingTop = Math.max( ( $( window ).height() - $card.outerHeight( true ) ) / 2, 50 );
+
+      var paddingTop  = Math.max( ( $( window ).height() - $card.outerHeight( true ) ) / 2, 50 )
+        , paddingSide = ( $( window ).width() / 2 ) - ( $card.width() / 2 )
+        ;
+
       $main.css('paddingTop', paddingTop + 'px');
+
+      $main.width( width + paddingSide *2 );
+      $main.css('paddingLeft',  paddingSide + 'px');
+      $main.css('paddingRight', paddingSide + 'px');
     }
   }
 );

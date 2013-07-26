@@ -3,7 +3,7 @@ _W.TemperatureSelector = {};
 // TEMP
 (function() {
 
-  _W.TemperatureSelector = function init_TemperatureSelector ( $el ) {
+  _W.TemperatureSelector = function init_TemperatureSelector ( $el, dataKey ) {
 
     $el.each(
       function ( index, el ) {
@@ -17,7 +17,7 @@ _W.TemperatureSelector = {};
           , $prev      = $container.find('.prev')
           , $next      = $container.find('.next')
 
-          , value      = 0
+          , value      = window.localStorage.getItem( dataKey ) || 0
           , max        = $value.data('max')
           , min        = $value.data('min')
           ;
@@ -63,6 +63,9 @@ _W.TemperatureSelector = {};
 
           $input.val(  value );
           $value.text( value );
+
+          if ( Modernizr.localstorage )
+            window.localStorage.setItem( dataKey, value );
 
           $therm.removeClass('low medium-low medium-high high full');
           if ( value > -40 && value <= -20 )

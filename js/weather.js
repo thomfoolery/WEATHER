@@ -3,7 +3,7 @@ _W.WeatherSelector = {};
 // WEATHER
 (function () {
 
-  _W.WeatherSelector = function init_WeatherSelector ( $el ) {
+  _W.WeatherSelector = function init_WeatherSelector ( $el, dataKey ) {
 
     $el.each(
       function ( index, el ) {
@@ -18,6 +18,7 @@ _W.WeatherSelector = {};
           , $next      = $container.find('.next')
 
           , index      = 0
+          , value      = window.localStorage.getItem( dataKey )
           , width      = $glyphs.width() * $glyphs.size()
           ;
 
@@ -26,6 +27,11 @@ _W.WeatherSelector = {};
         $next.click( next );
 
         $frame.bind('mousewheel DOMMouseScroll MozMousePixelScroll', onScroll );
+
+        if ( value ) {
+          if ( _.isNumber( index = $('.glyph.' + value ).index() ) )
+            goto( index );
+        }
 
         if ( Modernizr.touch ) {
 
@@ -61,7 +67,12 @@ _W.WeatherSelector = {};
 
         function goto ( index ) {
 
-          $input.val( $glyphs.eq( index ).find('.title').text() );
+          var value = $glyphs.eq( index ).find('.title').text().toLowerCase();
+
+          if ( Modernizr.localstorage )
+            window.localStorage.setItem( dataKey, value );
+
+          $input.val( value );
           $frame.animate({ "scrollLeft": $glyphs.width() * index }, 100 );
         }
 
