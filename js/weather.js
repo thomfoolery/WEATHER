@@ -20,6 +20,8 @@ _W.WeatherSelector = {};
           , index      = 0
           , value      = window.localStorage.getItem( dataKey )
           , width      = $glyphs.width() * $glyphs.size()
+
+          , isAnimating = false
           ;
 
         $ul.width( width );
@@ -27,6 +29,7 @@ _W.WeatherSelector = {};
         $next.click( next );
 
         $frame.bind('mousewheel DOMMouseScroll MozMousePixelScroll', onScroll );
+        $ul.bind("transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd", onTransitionEnd );
 
         if ( value ) {
           if ( _.isNumber( index = $('.glyph.' + value ).index() ) )
@@ -69,6 +72,8 @@ _W.WeatherSelector = {};
 
           var value = $glyphs.eq( index ).find('.title').text().toLowerCase();
 
+          if ( isAnimating ) return; // EXIT
+
           if ( Modernizr.localstorage )
             window.localStorage.setItem( dataKey, value );
 
@@ -76,10 +81,13 @@ _W.WeatherSelector = {};
 
           if ( Modernizr.touch )
             $ul.css('marginLeft', ( - $glyphs.width() * index ) + 'px');
-          else
-            $ul.css( _W.cssPrefix.css + 'transform', 'translateX(' + ( - $glyphs.width() * index ) + 'px)');
+          else {
+            isAnimating = true;
+            $ul.css( _W.prefix.css + 'transform', 'translateX(' + ( - $glyphs.width() * index ) + 'px)');
+          }
         }
 
+        // SCROLL
         function onScroll ( e ) {
 
           var dir = null;
@@ -87,14 +95,21 @@ _W.WeatherSelector = {};
           e.preventDefault();
           e.stopPropagation();
 
+          if ( isAnimating ) return; // EXIT
+
           if ( e.originalEvent.wheelDelta || e.originalEvent.detail )
             dir = e.originalEvent.wheelDelta || -e.originalEvent.detail;
           if ( dir < 0 )
             next();
           else if ( dir > 0 )
             prev();
+        };
+
+        function onTransitionEnd () {
+          isAnimating = false;
         }
 
+        // TOUCH
         var firstTouch           = null
           , startingScrollOffset = null
           , maxOffset            = width - $glyphs.width()

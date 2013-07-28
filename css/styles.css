@@ -1198,7 +1198,7 @@ body {
   margin: 0;
   font-family: Calibri, Arial, sans-serif;
   font-size: 10px;
-  overflow: hidden;
+  overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -webkit-touch-callout: none;
   -webkit-user-select: none;
@@ -1208,8 +1208,9 @@ body {
   user-select: none;
 }
 body {
-  background: url(http://www.bigpicture.in/wp-content/uploads/2011/01/LandscapePhotographsOfBeautifulRoads10_002.jpg) center no-repeat;
+  background: url(http://upload.wikimedia.org/wikipedia/commons/d/dc/Sky-View_ForestWander.JPG) center no-repeat;
   background-size: cover;
+  padding: 25px 0;
 }
 * {
   -webkit-box-sizing: border-box;
@@ -1223,6 +1224,7 @@ input {
   padding: 0;
   border: none;
   font-size: 2em;
+  text-indent: 15px;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   -ms-box-sizing: border-box;
@@ -1234,12 +1236,10 @@ input:active {
   box-shadow: none;
 }
 header {
-  position: fixed;
-  left: 50%;
-  top: 20px;
+  position: relative;
   width: 300px;
   height: 50px;
-  margin: 0 0 0 -150px;
+  margin: 0 auto 25px;
 }
 header input {
   display: block;
@@ -1247,7 +1247,6 @@ header input {
   height: 50px;
   line-height: 50px;
   border-radius: 6px;
-  text-align: center;
   text-overflow: ellipsis;
   overflow: hidden;
 }
@@ -1266,13 +1265,54 @@ header button {
 footer {
   position: relative;
   width: 300px;
-  height: 50px;
-  margin: 20px auto;
+  margin: 25px auto;
+  text-align: center;
 }
 footer .prev,
 footer .next {
   background-color: white;
-  margin: -20px 0 0;
+  margin: -25px 0 0;
+}
+footer #pagination {
+  position: relative;
+  background-color: white;
+  height: 50px;
+  line-height: 50px;
+  border-radius: 6px;
+}
+footer #pagination .tick {
+  display: inline-block;
+  background-color: #ccc;
+  color: #ccc;
+  width: 18px;
+  height: 18px;
+  line-height: 18px;
+  border-radius: 50%;
+  margin: 0 3px;
+  text-align: center;
+  cursor: pointer;
+}
+footer #pagination .tick.active {
+  background-color: black;
+  color: black;
+}
+footer button {
+  display: block;
+  background-color: white;
+  height: 50px;
+  line-height: 50px;
+  border: none;
+  border-radius: 6px;
+  margin: 25px 0;
+  width: 100%;
+  font-size: 2em;
+}
+footer button .glyph {
+  font-size: 2em;
+  vertical-align: middle;
+}
+footer button:hover {
+  background-color: #ddd;
 }
 .ui-btn {
   display: inline-block;
@@ -1305,18 +1345,20 @@ footer .next {
   float: left;
   position: relative;
   background-color: #666;
-  max-width: 300px;
-  min-height: 100%;
-  padding: 25px 0;
+  width: 300px;
+  padding: 0 0 25px 0;
   border-radius: 6px;
   margin: 0 25px 0 0;
 }
 .card .input-wrapper {
-  margin: 0 25px;
+  margin: 0;
 }
 .card .input-wrapper input {
   width: 100%;
-  background-color: transparent;
+  background-color: black;
+  color: white;
+  padding: 20px 0 20px;
+  border-radius: 6px 6px 0 0;
   text-align: center;
 }
 .card:after {
@@ -1340,13 +1382,12 @@ footer .next {
   display: none;
 }
 #main {
-  min-height: 550px;
   margin: 0 auto;
   overflow: hidden;
-  -webkit-transition: -webkit-transform 0.25s linear;
-  -moz-transition: -moz-transform 0.25s linear;
-  -ms-transition: -ms-transform 0.25s linear;
-  transition: transform .25s linear;
+  -webkit-transition: -webkit-transform 0.25s ease-in-out;
+  -moz-transition: -moz-transform 0.25s ease-in-out;
+  -ms-transition: -ms-transform 0.25s ease-in-out;
+  transition: transform 0.25s ease-in-out;
 }
 #main .weather-selector {
   position: relative;
@@ -1365,10 +1406,10 @@ footer .next {
   height: 100%;
   padding: 0;
   margin: 0;
-  -webkit-transition: -webkit-transform 0.25s linear;
-  -moz-transition: -moz-transform 0.25s linear;
-  -ms-transition: -ms-transform 0.25s linear;
-  transition: transform .25s linear;
+  -webkit-transition: -webkit-transform 0.25s ease-in-out;
+  -moz-transition: -moz-transform 0.25s ease-in-out;
+  -ms-transition: -ms-transform 0.25s ease-in-out;
+  transition: transform 0.25s ease-in-out;
 }
 #main .weather-selector .frame .glyph {
   float: left;
@@ -1456,7 +1497,7 @@ footer .next {
   width: 50px;
   height: 50px;
   border-radius: 6px;
-  margin: -20px 5px 0;
+  margin: -25px 5px 0;
   text-indent: -9999em;
 }
 .prev .ui-icon,
@@ -1518,44 +1559,36 @@ footer .next {
   left: -9999em;
 }
 @media only screen and (max-width: 600px) {
+  body {
+    padding: 10px 0;
+  }
   header {
-    top: 10px;
+    margin-bottom: 10px;
   }
   #main .card {
     background-color: white;
-    padding: 10px 0;
-  }
-  #main .card #date-input-wrapper {
-    margin-bottom: -10px;
+    padding: 0;
   }
   #main .card .weather-selector {
-    height: 130px;
+    height: 125px;
     margin-bottom: -30px;
   }
   #main .card .weather-selector .frame .glyph .climacon {
     font-size: 9em;
   }
   #main .card .temperature-selector {
-    height: 100px;
+    height: 125px;
   }
   #main .card .temperature-selector .frame {
     font-size: 8em;
   }
-  #main .card .ui-btn.save {
-    background-color: #ddd;
-    margin: 10px auto;
-  }
-  #main .card .ui-btn.save .glyph {
-    font-size: 2em;
-  }
   #main .card:after {
     display: none;
   }
-  footer {
-    position: fixed;
-    left: 50%;
-    bottom: 0;
-    margin: 0 0 10px -150px;
+  footer,
+  #pagination,
+  footer > button {
+    margin: 10px auto;
   }
 }
 @media only screen and (min-width: 600px) {

@@ -80,6 +80,7 @@ _W.TemperatureSelector = {};
             $therm.addClass('full');
         }
 
+        // SCROLL
         function onScroll ( e ) {
 
           var dir = null;
@@ -93,8 +94,9 @@ _W.TemperatureSelector = {};
             next();
           else if ( dir > 0 )
             prev();
-        }
+        };
 
+        // TOUCH
         var firstTouch           = null
           , startingScrollOffset = null
           ;

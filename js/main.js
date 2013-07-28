@@ -1,5 +1,5 @@
 var _W = {
-  "cssPrefix": (function () { // IIF
+  "prefix": (function () { // IIF
     // exit if IE8
     if ( ! window.getComputedStyle ) return '';
 
@@ -44,6 +44,7 @@ $.when(
     var $main  = $('#main')
       , $card
       , $cards
+      , $ticks
 
       , width         = 0
       , padding       = 0
@@ -51,37 +52,63 @@ $.when(
       , index         = 0
       , today         = new Date()
       , card_template = _.template( $('#card-template').html() )
+      , cardOuterHeight
+      , cardWidth
+
+      , isAnimating = false
       ;
 
     for ( var i = 0; i < 7; i++ ) {
+
       today.setDate( today.getDate() +1 );
-      $card = createCard( today );
+      $card = createCard( i, today );
       width += $card.outerWidth( true );
 
       if ( i == 0 )
         $card.addClass('active');
     }
 
-    $cards  = $('.card');
+    $cards          = $('.card');
+    $ticks          = $('.tick');
+
+    cardWidth       = $card.width();
+    cardOuterHeight = $card.outerHeight( true );
 
     $('footer .prev').click( prev );
     $('footer .next').click( next );
 
     $('body').bind('mousewheel DOMMouseScroll MozMousePixelScroll', onScroll );
+    $main.bind("transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd", onTransitionEnd );
 
-    function createCard ( date ) {
+    goto( 0 );
 
-      var $card = $(
+    function createCard ( i, date ) {
+
+      var now        = new Date()
+        , dataKey    = date.getFullYear() + '-' + ( date.getMonth() +1 ) + '-' + date.getDate()
+        , dateString = (
+                         date.getFullYear() === now.getFullYear() &&
+                         date.getMonth() === now.getMonth() &&
+                         date.getDate() === now.getDate() +1
+                       )
+                         ? 'Tomorrow'
+                         : date.toString()
+
+        , $card = $(
             card_template({
-              "date": date,
+              "date": dateString,
               "location": _W.Location.getLocation()
             })
           )
-
-        , dataKey = date.getFullYear() + '-' + ( date.getMonth() +1 ) + '-' + date.getDate();
+        , $tick = $('<span class="tick">' + ( i +1 ) + '</span>')
         ;
 
+      $tick.on('click', function () {
+        goto( i );
+      });
+
       $('#main').append( $card );
+      $('#pagination').append( $tick )
 
       _W.WeatherSelector(     $card.find('.weather-selector')    , 'weather.'     + dataKey );
       _W.TemperatureSelector( $card.find('.temperature-selector'), 'temperature.' + dataKey );
@@ -93,7 +120,7 @@ $.when(
       if ( e ) e.preventDefault();
       if ( $main.is(':animated') ) return; // EXIT
       if ( index <= 0 )
-        index = $cards.size() -1;
+        return;
       else
         index --;
       goto( index );
@@ -103,7 +130,7 @@ $.when(
       if ( e ) e.preventDefault();
       if ( $main.is(':animated') ) return; // EXIT
       if ( index >= $cards.size() -1 )
-        index = 0;
+        return;
       else
         index ++;
       goto( index );
@@ -111,17 +138,28 @@ $.when(
 
     function goto ( index ) {
 
+      if ( isAnimating ) return; // EXIT
+
       $cards.filter('.active').removeClass('active');
+      $ticks.filter('.active').removeClass('active');
+
       $cards.eq( index ).addClass('active');
-      $main.css( _W.cssPrefix.css + 'transform', 'translateX(' + ( - $card.outerWidth( true ) * index ) + 'px)');
+      $ticks.eq( index ).addClass('active');
+
+      isAnimating = true;
+
+      $main.css( _W.prefix.css + 'transform', 'translateX(' + ( - $card.outerWidth( true ) * index ) + 'px)');
     }
 
+    // SCROLL
     function onScroll ( e ) {
 
       var dir = null;
 
       e.preventDefault();
       e.stopPropagation();
+
+      if ( isAnimating ) return; // EXIT
 
       if ( e.originalEvent.wheelDelta || e.originalEvent.detail )
         dir = e.originalEvent.wheelDelta || -e.originalEvent.detail;
@@ -131,14 +169,15 @@ $.when(
         prev();
     }
 
+    function onTransitionEnd () {
+      isAnimating = false;
+    }
+
+    // RESIZE
     $( window ).resize( onResize ).resize();
     function onResize () {
 
-      var paddingTop  = Math.max( ( $( window ).height() - $card.outerHeight( true ) ) / 2, 50 )
-        , paddingSide = ( $( window ).width() / 2 ) - ( $card.width() / 2 )
-        ;
-
-      $main.css('paddingTop', paddingTop + 'px');
+      var paddingSide = ( $( window ).width() / 2 ) - ( cardWidth / 2 );
 
       $main.width( width + paddingSide *2 );
       $main.css('paddingLeft',  paddingSide + 'px');

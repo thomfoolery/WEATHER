@@ -18,29 +18,36 @@
 
         <header>
             <div id="location-input-wrapper" class="input-wrapper">
+
                 <input type="text" id="location" name="location"
                        placeholder="Fetching location..."
                        required readonly />
 
-                <button>
-                    <span class="glyph">
-                        <span class="climacon cloud refresh" aria-hidden="true"></span>
-                    </span>
-                </button>
             </div>
         </header>
 
         <div id="main" class="layout-constraint"></div>
 
         <footer>
-            <button class="prev">
-                Previous
-                <span class="ui-icon"></span>
+
+            <div id="pagination">
+                <button class="prev">
+                    Previous
+                    <span class="ui-icon"></span>
+                </button>
+                <button class="next">
+                    Next
+                    <span class="ui-icon"></span>
+                </button>
+            </div>
+
+            <button>
+                Submit
+                <span class="glyph">
+                    <span class="climacon cloud up" aria-hidden="true"></span>
+                </span>
             </button>
-            <button class="next">
-                Next
-                <span class="ui-icon"></span>
-            </button>
+
         </footer>
 
         <script id="card-template" type="text/html">
@@ -48,8 +55,8 @@
 
                 <div id="date-input-wrapper" class="input-wrapper">
                     <input type="text" id="date" name="date"
-                           placeholder="Fetching Location..."
-                           value="{{ date || '' }}"
+                           placeholder=""
+                           value="{{ date }}"
                            required readonly />
                 </div>
 
@@ -167,13 +174,6 @@
                     </button>
 
                 </div>
-
-                <button type="submit" class="ui-btn save">
-                    <span class="glyph">
-                        <span class="climacon cloud up" aria-hidden="true"></span>
-                    </span>
-                    Save
-                </button>
 
             </div>
         </script>

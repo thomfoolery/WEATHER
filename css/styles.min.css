@@ -186,17 +186,19 @@ input.ui-button::-moz-focus-inner,button.ui-button::-moz-focus-inner{border:0;pa
 html,body{position:relative;background-color:#ddd;width:100%;height:100%;padding:0;margin:0;font-family:Calibri,Arial,sans-serif;font-size:10px;overflow:hidden;-webkit-font-smoothing:antialiased;-webkit-touch-callout:none;-webkit-user-select:none;-khtml-user-select:none;-moz-user-select:moz-none;-ms-user-select:none;user-select:none;}
 body{background:url(http://www.bigpicture.in/wp-content/uploads/2011/01/LandscapePhotographsOfBeautifulRoads10_002.jpg) center no-repeat;background-size:cover;}
 *{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;}
-input{height:30px;line-height:30px;color:#666;padding:0;border:none;font-size:2em;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;-ms-box-sizing:border-box;box-sizing:border-box;}input:focus,input:active{outline:0;box-shadow:none;}
-header{position:fixed;left:50%;top:20px;width:350px;height:50px;margin:0 0 0 -175px;}header input{display:block;width:100%;height:50px;line-height:50px;border-radius:6px;text-align:center;text-overflow:ellipsis;overflow:hidden;}
+input{height:30px;line-height:30px;color:black;padding:0;border:none;font-size:2em;text-indent:15px;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;-ms-box-sizing:border-box;box-sizing:border-box;}input:focus,input:active{outline:0;box-shadow:none;}
+header{position:fixed;left:50%;top:20px;width:300px;height:50px;margin:0 0 0 -150px;}header input{display:block;width:100%;height:50px;line-height:50px;border-radius:6px;text-overflow:ellipsis;overflow:hidden;}
 header button{position:absolute;background-color:white;right:0;top:0;width:50px;height:50px;border:none;border-radius:6px;font-size:4em;text-align:center;}
 footer{position:relative;width:300px;height:50px;margin:20px auto;}footer .prev,footer .next{background-color:white;margin:-20px 0 0;}
 .ui-btn{display:inline-block;background-color:#ddd;border:none;border-radius:6px;padding:0 20px;font-size:2em;text-align:center;vertical-align:middle;}.ui-btn .glyph{font-size:3em;vertical-align:middle;}
 .ui-btn.save{display:block;width:150px;padding:0 20px;margin:20px auto;}.ui-btn.save .glyph{position:relative;top:5px;}
 .ui-btn:hover{background-color:#ccc;}
-.card{float:left;position:relative;background-color:white;max-width:300px;min-height:100%;padding:25px 0;border-radius:6px;margin:0 25px 0 0;-webkit-transform:scale(0.8);-webkit-transition:-webkit-transform 0.25s linear;}.card .input-wrapper{margin:0 25px;}.card .input-wrapper input{width:100%;text-align:center;}
-.card:after{content:'';position:absolute;left:0;top:0;width:100%;height:100%;background-color:rgba(0, 0, 0, 0.5);border-radius:6px;}
-.card.active{-webkit-transform:scale(1);}.card.active:after{display:none;}
-#main{min-height:550px;margin:0 auto;overflow:hidden;}#main .weather-selector{position:relative;height:200px;}#main .weather-selector .frame{position:relative;width:250px;height:100%;margin:0 auto;text-align:center;overflow:hidden;}#main .weather-selector .frame ul{list-style:none;height:100%;padding:0;margin:0;}
+.card{float:left;position:relative;background-color:#666;width:300px;padding:0 0 25px 0;border-radius:6px;margin:0 25px 0 0;}.card .input-wrapper{margin:0;}.card .input-wrapper input{width:100%;background-color:black;color:white;padding:25px 0 20px;border-radius:6px 6px 0 0;text-align:center;}
+.card:after{content:'';position:absolute;left:0;top:0;width:100%;height:100%;}
+.card .ui-btn{background-color:#555;}
+.card.active{background-color:white;}.card.active .ui-btn{background-color:#ddd;}
+.card.active:after{display:none;}
+#main{min-height:550px;margin:0 auto;overflow:hidden;-webkit-transition:-webkit-transform 0.25s linear;-moz-transition:-moz-transform 0.25s linear;-ms-transition:-ms-transform 0.25s linear;transition:transform .25s linear;}#main .weather-selector{position:relative;height:200px;}#main .weather-selector .frame{position:relative;width:250px;height:100%;margin:0 auto;text-align:center;overflow:hidden;}#main .weather-selector .frame ul{list-style:none;height:100%;padding:0;margin:0;-webkit-transition:-webkit-transform 0.25s linear;-moz-transition:-moz-transform 0.25s linear;-ms-transition:-ms-transform 0.25s linear;transition:transform .25s linear;}
 #main .weather-selector .frame .glyph{float:left;position:relative;width:250px;height:100%;margin:0 auto;}#main .weather-selector .frame .glyph [type=checkbox]{border:0;clip:rect(0 0 0 0);height:1px;margin:-1px;overflow:hidden;padding:0;position:absolute;width:1px;position:absolute;left:-9999em;}
 #main .weather-selector .frame .glyph .climacon{position:absolute;left:50%;top:50%;width:250px;height:100%;line-height:250px;margin:-125px 0 0 -125px;font-size:15em;}
 #main .weather-selector .frame .glyph .title{width:100%;display:block;position:absolute;left:0;bottom:0;text-align:center;font-size:2.5em;}
@@ -214,4 +216,4 @@ footer{position:relative;width:300px;height:50px;margin:20px auto;}footer .prev,
 #ui-datepicker-div .ui-datepicker-prev .ui-icon{border-right-color:#666;}
 #ui-datepicker-div .ui-datepicker-next .ui-icon{border-left-color:#666;}
 .ui-helper-hidden-accessible{position:absolute;left:-9999em;}
-@media only screen and (max-width:600px){#main .card{padding:20px 0;}#main .card .weather-selector{height:150px;}#main .card .weather-selector .frame .glyph .climacon{font-size:10em;} #main .card .tempurature-selector{height:120px;}}
+@media only screen and (max-width:600px){header{top:10px;} #main .card{background-color:white;padding:10px 0;}#main .card .weather-selector{height:125px;margin-bottom:-30px;}#main .card .weather-selector .frame .glyph .climacon{font-size:9em;} #main .card .temperature-selector{height:125px;}#main .card .temperature-selector .frame{font-size:8em;} #main .card:after{display:none;} footer{position:fixed;left:50%;bottom:0;margin:0 0 10px -150px;}}@media only screen and (min-width:600px){#main .card{-webkit-transform:scale(0.8);-webkit-transition:-webkit-transform 0.25s linear;}#main .card.active{-webkit-transform:scale(1);}}
