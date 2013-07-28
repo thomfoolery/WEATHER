@@ -31,10 +31,10 @@ _W.WeatherSelector = {};
         $frame.bind('mousewheel DOMMouseScroll MozMousePixelScroll', onScroll );
         $ul.bind("transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd", onTransitionEnd );
 
-        if ( value ) {
-          if ( _.isNumber( index = $('.glyph.' + value ).index() ) )
-            goto( index );
-        }
+        if ( value )
+          index = $('.glyph.' + value ).index();
+
+        goto( index );
 
         if ( Modernizr.touch ) {
 
@@ -43,9 +43,9 @@ _W.WeatherSelector = {};
             e.stopPropagation();
           });
 
-          $frame.bind('touchstart', onTouchstart );
-          $frame.bind('touchmove',  onTouchmove );
-          $frame.bind('touchend',   onTouchend );
+          $frame.bind('touchstart webkitTouchStart', onTouchstart );
+          $frame.bind('touchmove  webkitTouchMove',  onTouchmove );
+          $frame.bind('touchend   webkitTouchEnd',   onTouchend );
         }
 
         function prev ( e ) {
@@ -111,6 +111,8 @@ _W.WeatherSelector = {};
 
         // TOUCH
         var firstTouch           = null
+          , currentTouch         = null
+          , originalIndex        = index
           , startingScrollOffset = null
           , maxOffset            = width - $glyphs.width()
           ;
@@ -119,8 +121,8 @@ _W.WeatherSelector = {};
 
           $frame.addClass('touch-start');
 
-          firstTouch           = e.changedTouches[0];
-          startingScrollOffset = $frame.scrollLeft();
+          firstTouch    = currentTouch     = e.changedTouches[0];
+          originalIndex = index;
         }
 
         function onTouchmove ( e ) {
@@ -128,8 +130,17 @@ _W.WeatherSelector = {};
           $frame.addClass('touch-move');
           $frame.removeClass('touch-move-left touch-move-right');
 
-          currentTouch = e.changedTouches[0];
-          slide( firstTouch.pageX - currentTouch.pageX );
+          currentTouch = e.touches[0];
+
+          var diffX = firstTouch.pageX - currentTouch.pageX
+            , diffY = firstTouch.pageY - currentTouch.pageY
+            , diff  = Math.max( Math.abs( diffX ), Math.abs( diffY ) )
+            , i     = index + Math.floor( diff / 10 )
+            ;
+
+          if ( diff * -1 === diffX || diff * -1 === diffY ) i *= -1;
+          if ( i === 0 ) return; // EXIT
+          goto( originalIndex + i );
         }
 
         function onTouchend ( e ) {

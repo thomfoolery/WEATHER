@@ -4,22 +4,31 @@ _W.Location = {};
 (function() {
 
   var _P = {
-        "lat":      window.localStorage.getItem('location.lat')    || null,
-        "lng":      window.localStorage.getItem('location.lng')    || null,
-        "string": window.localStorage.getItem('location.string') ||null
+        "lat":    window.localStorage.getItem('location.lat')    || null,
+        "lng":    window.localStorage.getItem('location.lng')    || null,
+        "string": window.localStorage.getItem('location.string') || null
       }
     ;
 
-  if ( ! _P.lat || ! _P.lng || ! _P.string && navigator.geolocation )
-    navigator.geolocation.getCurrentPosition( setGeoLocation );
-  else
-    $('#location').val( _P.string );
+  _.each( _P, function( value, key, _P ) {
+    try { _P[ key ] = JSON.parse( value ); }
+    catch ( e ) { _P[ key ] = null; }
+  });
+
+  refresh();
+  function refresh () {
+    if ( ! _P.lat || ! _P.lng || ! _P.string && navigator.geolocation )
+      navigator.geolocation.getCurrentPosition( setGeoLocation );
+    else
+      $('#location').val( _P.string );
+  }
 
   $('#location-input-wrapper button').click( function () {
-
     if ( navigator.geolocation )
       navigator.geolocation.getCurrentPosition( setGeoLocation );
   });
+
+  _W.Location.refresh = refresh;
 
   _W.Location.getLat = function () {
     return _P.lat;
@@ -37,7 +46,6 @@ _W.Location = {};
 
     _P.lat = position.coords.latitude;
     _P.lng = position.coords.longitude;
-
     $('#location').val('Fetching location...');
     $.getJSON('http://maps.googleapis.com/maps/api/geocode/json?latlng=' + _P.lat + ',' + _P.lng + '&sensor=true')
       .done( callback );
@@ -49,8 +57,8 @@ _W.Location = {};
       for ( var i = data.results.length; i > 0; i-- ) {
         if ( data.results[ i -1 ].formatted_address.split(',').length === 3 ) {
 
-          _P.lat = data.results[ 0 ].lat;
-          _P.lng = data.results[ 0 ].lng;
+          _P.lat = data.results[ 0 ].geometry.location.lat;
+          _P.lng = data.results[ 0 ].geometry.location.lng;
           _P.string = data.results[ i -1 ].formatted_address;
 
           if ( Modernizr.localstorage ) {

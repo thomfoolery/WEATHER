@@ -74,13 +74,18 @@ $.when(
     cardWidth       = $card.width();
     cardOuterHeight = $card.outerHeight( true );
 
-    $('footer .prev').click( prev );
-    $('footer .next').click( next );
+    $('header input')  .click( locate );
+    $('footer .prev')  .click( prev );
+    $('footer .next')  .click( next );
+    $('footer .submit').click( onSubmit );
 
     $('body').bind('mousewheel DOMMouseScroll MozMousePixelScroll', onScroll );
     $main.bind("transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd", onTransitionEnd );
 
     goto( 0 );
+
+    // hide address bar on mobile
+    window.scrollTo(0, window.pageYOffset + 1);
 
     function createCard ( i, date ) {
 
@@ -104,6 +109,7 @@ $.when(
         ;
 
       $tick.on('click', function () {
+        index = i
         goto( i );
       });
 
@@ -121,9 +127,7 @@ $.when(
       if ( $main.is(':animated') ) return; // EXIT
       if ( index <= 0 )
         return;
-      else
-        index --;
-      goto( index );
+      goto( --index );
     }
 
     function next ( e ) {
@@ -131,9 +135,7 @@ $.when(
       if ( $main.is(':animated') ) return; // EXIT
       if ( index >= $cards.size() -1 )
         return;
-      else
-        index ++;
-      goto( index );
+      goto( ++index );
     }
 
     function goto ( index ) {
@@ -149,6 +151,21 @@ $.when(
       isAnimating = true;
 
       $main.css( _W.prefix.css + 'transform', 'translateX(' + ( - $card.outerWidth( true ) * index ) + 'px)');
+    }
+
+    function locate () {
+
+    }
+
+    function onSubmit ( e ) {
+
+      var data = {};
+
+      for ( var i in window.localStorage ) {
+        data[ i ] = window.localStorage[ i ];
+      }
+
+      $.post('services/index.php', JSON.stringify( data ) );
     }
 
     // SCROLL

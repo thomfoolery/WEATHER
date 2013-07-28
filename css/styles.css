@@ -1210,6 +1210,7 @@ body {
 body {
   background: url(http://upload.wikimedia.org/wikipedia/commons/d/dc/Sky-View_ForestWander.JPG) center no-repeat;
   background-size: cover;
+  background-attachment: fixed;
   padding: 25px 0;
 }
 * {
@@ -1243,24 +1244,15 @@ header {
 }
 header input {
   display: block;
+  background-color: rgba(0, 0, 0, 0.75);
+  color: white;
   width: 100%;
   height: 50px;
   line-height: 50px;
   border-radius: 6px;
+  text-align: center;
   text-overflow: ellipsis;
   overflow: hidden;
-}
-header button {
-  position: absolute;
-  background-color: white;
-  right: 0;
-  top: 0;
-  width: 50px;
-  height: 50px;
-  border: none;
-  border-radius: 6px;
-  font-size: 4em;
-  text-align: center;
 }
 footer {
   position: relative;
@@ -1270,35 +1262,35 @@ footer {
 }
 footer .prev,
 footer .next {
-  background-color: white;
+  background-color: transparent;
   margin: -25px 0 0;
 }
 footer #pagination {
   position: relative;
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0.5);
   height: 50px;
   line-height: 50px;
   border-radius: 6px;
 }
 footer #pagination .tick {
   display: inline-block;
-  background-color: #ccc;
-  color: #ccc;
+  color: transparent;
   width: 18px;
   height: 18px;
   line-height: 18px;
+  border: 2px solid black;
   border-radius: 50%;
-  margin: 0 3px;
+  margin: 0 5px;
   text-align: center;
+  vertical-align: middle;
   cursor: pointer;
 }
 footer #pagination .tick.active {
-  background-color: black;
+  background-color: rgba(0, 0, 0, 0.75);
   color: black;
 }
-footer button {
+footer .ui-btn {
   display: block;
-  background-color: white;
   height: 50px;
   line-height: 50px;
   border: none;
@@ -1307,16 +1299,14 @@ footer button {
   width: 100%;
   font-size: 2em;
 }
-footer button .glyph {
+footer .ui-btn .glyph {
   font-size: 2em;
   vertical-align: middle;
 }
-footer button:hover {
-  background-color: #ddd;
-}
 .ui-btn {
   display: inline-block;
-  background-color: #ddd;
+  background-color: rgba(0, 0, 0, 0.75);
+  color: white;
   border: none;
   border-radius: 6px;
   padding: 0 20px;
@@ -1339,24 +1329,26 @@ footer button:hover {
   top: 5px;
 }
 .ui-btn:hover {
-  background-color: #ccc;
+  background-color: #000000;
 }
 .card {
   float: left;
   position: relative;
-  background-color: #666;
+  background-color: rgba(0, 0, 0, 0.5);
   width: 300px;
   padding: 0 0 25px 0;
   border-radius: 6px;
   margin: 0 25px 0 0;
+  -webkit-transform: scale(0.8);
+  -webkit-transition: -webkit-transform 0.25s linear;
 }
 .card .input-wrapper {
   margin: 0;
 }
 .card .input-wrapper input {
   width: 100%;
-  background-color: black;
-  color: white;
+  background-color: rgba(0, 0, 0, 0.75);
+  color: #999;
   padding: 20px 0 20px;
   border-radius: 6px 6px 0 0;
   text-align: center;
@@ -1373,7 +1365,11 @@ footer button:hover {
   background-color: #555;
 }
 .card.active {
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0.5);
+  -webkit-transform: scale(1);
+}
+.card.active .input-wrapper input {
+  color: white;
 }
 .card.active .ui-btn {
   background-color: #ddd;
@@ -1517,7 +1513,7 @@ footer button:hover {
 .next:hover,
 .prev:focus,
 .next:focus {
-  background-color: #ddd;
+  background-color: white;
 }
 .prev {
   left: 0;
@@ -1566,18 +1562,43 @@ footer button:hover {
     margin-bottom: 10px;
   }
   #main .card {
-    background-color: white;
     padding: 0;
   }
+  #main .card .weather-selector,
+  #main .card .temperature-selector {
+    float: left;
+    width: 150px;
+    height: 150px;
+    margin-bottom: 10px;
+  }
+  #main .card .weather-selector .prev,
+  #main .card .temperature-selector .prev,
+  #main .card .weather-selector .next,
+  #main .card .temperature-selector .next {
+    display: none;
+  }
+  #main .card .weather-selector .frame,
+  #main .card .temperature-selector .frame {
+    width: 150px;
+  }
+  #main .card .weather-selector .frame .glyph,
+  #main .card .temperature-selector .frame .glyph {
+    width: 150px;
+  }
+  #main .card .weather-selector .frame .glyph .celcius,
+  #main .card .temperature-selector .frame .glyph .celcius {
+    position: relative;
+    top: -20px;
+    font-size: .6em;
+  }
+  #main .card .temperature-selector {
+    margin-left: -20px;
+  }
   #main .card .weather-selector {
-    height: 125px;
     margin-bottom: -30px;
   }
   #main .card .weather-selector .frame .glyph .climacon {
     font-size: 9em;
-  }
-  #main .card .temperature-selector {
-    height: 125px;
   }
   #main .card .temperature-selector .frame {
     font-size: 8em;
@@ -1589,14 +1610,5 @@ footer button:hover {
   #pagination,
   footer > button {
     margin: 10px auto;
-  }
-}
-@media only screen and (min-width: 600px) {
-  #main .card {
-    -webkit-transform: scale(0.8);
-    -webkit-transition: -webkit-transform 0.25s linear;
-  }
-  #main .card.active {
-    -webkit-transform: scale(1);
   }
 }
