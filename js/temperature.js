@@ -95,6 +95,7 @@ _W.TemperatureSelector = {};
 
         var initial = {};
         function onSwipeStart ( e ) {
+
           initial['y']     = e.clientY || e.originalEvent.touches[0].pageY;
           initial['value'] = value;
           $( document ).on('mousemove touchmove',  onSwipeMove );
@@ -115,6 +116,7 @@ _W.TemperatureSelector = {};
         }
 
         function onSwipeEnd ( e ) {
+
           inital = {};
           $( document ).off('mousemove mouseup touchmove touchend touchcancel');
         }
