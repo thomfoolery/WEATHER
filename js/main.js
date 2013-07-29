@@ -246,7 +246,7 @@ $.when(
 
           var $btn = $('<button class="ui-btn"/>');
 
-          $btn.txt( response.name );
+          $btn.text( response.name );
           $btn.append('<img src="' + response.link + '/picture' + '" />');
           $('#facebook-login').replaceWith( $btn );
         });
