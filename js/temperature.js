@@ -110,8 +110,8 @@ _W.TemperatureSelector = {};
 
           var diff = Math.round(( initial['y'] - ( e.clientY || e.originalEvent.touches[0].pageY )) / 4 );
           value = initial['value'] + diff;
-          if ( value > 50  ) value =  50;
-          if ( value < -50 ) value = -50;
+          if ( value > 50  ) value = max;
+          if ( value < -50 ) value = min;
           goto( value );
 
         }
