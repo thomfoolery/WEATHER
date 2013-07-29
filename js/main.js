@@ -200,5 +200,31 @@ $.when(
       $main.css('paddingLeft',  paddingSide + 'px');
       $main.css('paddingRight', paddingSide + 'px');
     }
+
+    // FaceB
+    window.fbAsyncInit = function() {
+      FB.init({
+        appId      : '209166885904722', // App ID
+        channelUrl : 'http://thomfoolery.github.io/WEATHER/channel.html', // Channel File
+        status     : true, // check login status
+        cookie     : true  // enable cookies to allow the server to access the session
+      });
+
+      $('.facebook-login').on('click', function () { FB.login(); });
+
+      FB.Event.subscribe('auth.authResponseChange', function(response) {
+          if ( response.status === 'connected' ) {
+            FB.api('/me', function(response) { console.log('Good to see you, ' + response.name + '.'); });
+            $('.facebook-login').remove();
+          } else if ( response.status === 'not_authorized' ) {
+            FB.login();
+          } else {
+            FB.login();
+          }
+      });
+    }
+
+    $.getScript('//connect.facebook.net/en_US/all.js');
+
   }
 );
