@@ -244,10 +244,10 @@ $.when(
 
           console.log('Good to see you, ' + response.name + '.');
 
-          var $btn = $('<button class="ui-btn"/>')
-                      .txt( response.name )
-                      .append('<img src="' + response.link + '/picture' + '" />')
-            ;
+          var $btn = $('<button class="ui-btn"/>');
+
+          $btn.txt( response.name );
+          $btn.append('<img src="' + response.link + '/picture' + '" />');
 
           $('.facebook-login').replaceWith( $btn );
         });
