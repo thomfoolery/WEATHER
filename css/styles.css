@@ -1528,7 +1528,7 @@ footer .ui-btn .glyph {
 .next .ui-icon {
   background-image: url(../img/icn/arrow-right.png);
 }
-button.facebook-login {
+#facebook-login {
   background: #3f5a93;
   background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #3f5a93), color-stop(1, #5171b4));
   background: -ms-linear-gradient(bottom, #3f5a93, #5171b4);
@@ -1543,12 +1543,12 @@ button.facebook-login {
   text-shadow: 0 1px 3px black;
   font-size: 1.4em;
 }
-button.facebook-login img {
+#facebook-login img {
   position: relative;
   top: -3px;
   margin-right: 10px;
 }
-button.facebook-login strong {
+#facebook-login strong {
   font-size: 1.2em;
 }
 #ui-datepicker-div {
