@@ -3,8 +3,6 @@ _W.TemperatureSelector = {};
 // TEMP
 (function() {
 
-  localStorage.clear();
-
   _W.TemperatureSelector = function init_TemperatureSelector ( $el, dataKey ) {
 
     $el.each(
@@ -19,7 +17,7 @@ _W.TemperatureSelector = {};
           , $prev      = $container.find('.prev')
           , $next      = $container.find('.next')
 
-          , value      = window.localStorage.getItem( dataKey ) || 0
+          , value      = parseInt( ( window.localStorage.getItem( dataKey ) || 0 ) )
           , max        = $value.data('max')
           , min        = $value.data('min')
           ;
@@ -28,7 +26,7 @@ _W.TemperatureSelector = {};
         $next.click( next );
 
         $frame.bind('mousewheel DOMMouseScroll MozMousePixelScroll', onScroll );
-        $container.swipe({"swipeStatus": onSwipeStatus });
+        $frame.on('mousedown touchstart',             onSwipeStart );
 
         if ( Modernizr.touch ) {
 
@@ -96,25 +94,29 @@ _W.TemperatureSelector = {};
         };
 
         var initial = {};
-        function onSwipeStatus ( e, phase, direction, distance, duration, fingerCount  ) {
+        function onSwipeStart ( e ) {
+          initial['y']     = e.clientY || e.originalEvent.touches[0].pageY;
+          initial['value'] = value;
+          $( document ).on('mousemove touchmove',  onSwipeMove );
+          $( document ).on('mouseup   touchend   touchcancel', onSwipeEnd );
+        }
 
-          if ( phase == 'start' ) {
+        function onSwipeMove ( e ) {
 
-            initial['touch'] = { "x": e.x, "y": e.y }
-            initial['value'] = value;
+          e.preventDefault();
+          e.stopPropagation();
 
-            return; // EXIT
-          }
-
-          value = initial['value'] + ( e.x - initial['touch'].x );
+          var diff = Math.round(( initial['y'] - ( e.clientY || e.originalEvent.touches[0].pageY )) / 4 );
+          value = initial['value'] + diff;
+          if ( value > 50  ) value =  50;
+          if ( value < -50 ) value = -50;
           goto( value );
 
-          if ( phase == 'end' || phase == 'cancel' ) {
+        }
 
-            initial['touch'] = { "x": null, "y": null };
-            initial['value'] = null;
-            return; // EXIT
-          }
+        function onSwipeEnd ( e ) {
+          inital = {};
+          $( document ).off('mousemove mouseup touchmove touchend touchcancel');
         }
       }
     );
