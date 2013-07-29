@@ -270,11 +270,13 @@ $.when(
         loginType = 'facebook';
         ID        = FB.getUserID();
 
-      } else if ( response.status === 'not_authorized' ) {
-        // FB.login();
-      } else {
-        // FB.login();
       }
+      // else if ( response.status === 'not_authorized' ) {
+      //   // FB.login();
+      // }
+      // else {
+      //   // FB.login();
+      // }
     }
   }
 );
