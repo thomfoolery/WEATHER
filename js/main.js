@@ -244,13 +244,12 @@ $.when(
 
           console.log('Good to see you, ' + response.name + '.');
 
-          var $btn = $('<button id="account" class="ui-btn">' + response.name + '</button>');
+          var $btn = $('<button id="account" class="ui-btn">' +
+                        '<img src="http://graph.facebook.com/' + response.username + '/picture" class="profile-picture" />' +
+                        response.name + '</button>'
+                      );
 
           $('#facebook-login').replaceWith( $btn );
-
-          FB.api('/me/picture', function( response ) {
-            $btn.append('<img src="' + response.data.url + '" class="profile-picture" />');
-          });
         });
 
         loginType = 'facebook';
