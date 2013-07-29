@@ -117,6 +117,7 @@ $.when(
 
       $('#main').append( $card );
       $('#pagination').append( $tick )
+        .swipe({"swipe": onSwipe });
 
       _W.WeatherSelector(     $card.find('.weather-selector')    , 'weather.'     + dataKey );
       _W.TemperatureSelector( $card.find('.temperature-selector'), 'temperature.' + dataKey );
@@ -195,6 +196,12 @@ $.when(
         next();
       else if ( dir > 0 )
         prev();
+    }
+
+    // SWIPE
+    function onSwipe ( e, direction, distance, duration, fingerCount ) {
+      if ( direction == 'right' ) prev();
+      if ( direction == 'left' )  next();
     }
 
     function onTransitionEnd () {

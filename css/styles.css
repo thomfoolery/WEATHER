@@ -1236,6 +1236,34 @@ input:active {
   outline: 0;
   box-shadow: none;
 }
+.ui-btn {
+  display: inline-block;
+  background-color: rgba(0, 0, 0, 0.75);
+  color: white;
+  border: 1px solid black;
+  border-radius: 6px;
+  padding: 0 20px;
+  font-size: 2em;
+  text-align: center;
+  vertical-align: middle;
+}
+.ui-btn .glyph {
+  font-size: 3em;
+  vertical-align: middle;
+}
+.ui-btn.save {
+  display: block;
+  width: 150px;
+  padding: 0 20px;
+  margin: 20px auto;
+}
+.ui-btn.save .glyph {
+  position: relative;
+  top: 5px;
+}
+.ui-btn:hover {
+  background-color: #000000;
+}
 header {
   position: relative;
   width: 300px;
@@ -1302,34 +1330,6 @@ footer .ui-btn {
 footer .ui-btn .glyph {
   font-size: 2em;
   vertical-align: middle;
-}
-.ui-btn {
-  display: inline-block;
-  background-color: rgba(0, 0, 0, 0.75);
-  color: white;
-  border: none;
-  border-radius: 6px;
-  padding: 0 20px;
-  font-size: 2em;
-  text-align: center;
-  vertical-align: middle;
-}
-.ui-btn .glyph {
-  font-size: 3em;
-  vertical-align: middle;
-}
-.ui-btn.save {
-  display: block;
-  width: 150px;
-  padding: 0 20px;
-  margin: 20px auto;
-}
-.ui-btn.save .glyph {
-  position: relative;
-  top: 5px;
-}
-.ui-btn:hover {
-  background-color: #000000;
 }
 .card {
   float: left;
@@ -1398,6 +1398,7 @@ footer .ui-btn .glyph {
   overflow: hidden;
 }
 #main .weather-selector .frame ul {
+  position: relative;
   list-style: none;
   height: 100%;
   padding: 0;
@@ -1603,6 +1604,10 @@ button.facebook-login strong {
   #main .card .temperature-selector .frame .glyph {
     width: 150px;
   }
+  #main .card .weather-selector .frame .glyph .title,
+  #main .card .temperature-selector .frame .glyph .title {
+    font-size: 2em;
+  }
   #main .card .weather-selector .frame .glyph .celcius,
   #main .card .temperature-selector .frame .glyph .celcius {
     position: relative;
@@ -1610,7 +1615,7 @@ button.facebook-login strong {
     font-size: .6em;
   }
   #main .card .temperature-selector {
-    margin-left: -20px;
+    margin-left: -10px;
   }
   #main .card .weather-selector {
     margin-bottom: -30px;

@@ -28,13 +28,13 @@ _W.WeatherSelector = {};
         $prev.click( prev );
         $next.click( next );
 
+        $container.swipe({"swipe": onSwipe, "swipeStatus": onSwipeStatus, "threshold": 30 });
+        $frame.bind('mousewheel DOMMouseScroll MozMousePixelScroll', onScroll );
         $frame.bind('mousewheel DOMMouseScroll MozMousePixelScroll', onScroll );
         $ul.bind("transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd", onTransitionEnd );
 
         if ( value )
           index = $('.glyph.' + value ).index();
-
-        goto( index );
 
         if ( Modernizr.touch ) {
 
@@ -42,11 +42,9 @@ _W.WeatherSelector = {};
             e.preventDefault();
             e.stopPropagation();
           });
-
-          $frame.bind('touchstart webkitTouchStart', onTouchstart );
-          $frame.bind('touchmove  webkitTouchMove',  onTouchmove );
-          $frame.bind('touchend   webkitTouchEnd',   onTouchend );
         }
+
+        goto( index );
 
         function prev ( e ) {
           if ( e ) e.preventDefault();
@@ -109,63 +107,46 @@ _W.WeatherSelector = {};
           isAnimating = false;
         }
 
-        // TOUCH
-        var firstTouch           = null
-          , currentTouch         = null
-          , originalIndex        = index
-          , startingScrollOffset = null
-          , maxOffset            = width - $glyphs.width()
-          ;
-
-        function onTouchstart ( e ) {
-
-          $frame.addClass('touch-start');
-
-          firstTouch    = currentTouch     = e.changedTouches[0];
-          originalIndex = index;
+        // SWIPE
+        function onSwipe ( e, direction, distance, duration, fingerCount ) {
+          if ( direction == 'right' ) prev();
+          if ( direction == 'left' )  next();
         }
 
-        function onTouchmove ( e ) {
+        var initial = {};
+        function onSwipeStatus ( e, phase, direction, distance, duration, fingerCount  ) {
 
-          $frame.addClass('touch-move');
-          $frame.removeClass('touch-move-left touch-move-right');
+          if ( phase == 'start' ) {
 
-          currentTouch = e.touches[0];
+            initial = {
+              "touch": { "x": e.x, "y": e.y }
+            };
 
-          var diffX = firstTouch.pageX - currentTouch.pageX
-            , diffY = firstTouch.pageY - currentTouch.pageY
-            , diff  = Math.max( Math.abs( diffX ), Math.abs( diffY ) )
-            , i     = index + Math.floor( diff / 10 )
-            ;
+            if ( Modernizr.touch )
+              initial['target'] = { "x": parseFloat( $ul.css('marginLeft') ) };
 
-          if ( diff * -1 === diffX || diff * -1 === diffY ) i *= -1;
-          if ( i === 0 ) return; // EXIT
-          goto( originalIndex + i );
-        }
+            return; // EXIT
+          }
 
-        function onTouchend ( e ) {
+          if ( direction == 'up' || direction == 'down' ) return; // EXIT
 
-          $frame.removeClass('touch-start touch-move touch-move-left touch-move-right');
+          distance =  direction == 'left' ? distance * -1 : distance;
 
-          firstTouch           = null;
-          startingScrollOffset = null;
-        }
+          if ( Modernizr.touch )
+            $ul.css('marginLeft', initial['target'].x + distance + 'px');
 
-        function slide ( diff ) {
+          if ( phase == 'end' || phase == 'cancel' ) {
 
-          if ( diff > 0 )
-            $frame.addClass('touch-move-left');
-          if ( diff < 0 )
-            $frame.addClass('touch-move-right');
+            initial = {
+              "touch":  { "x": null, "y": null },
+              "target": { "x": null }
+            };
 
-          var scrollLeft = startingScrollOffset + diff;
+            if ( distance < $ul.swipe("option", "threshold") )
+              goto( index );
 
-          if ( scrollLeft < 0 )
-            scrollLeft = 0;
-          else if ( scrollLeft > maxOffset )
-            scrollLeft = maxOffset;
-
-          $frame.scrollLeft( scrollLeft );
+            return; // EXIT
+          }
         }
       }
     );

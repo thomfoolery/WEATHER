@@ -60,6 +60,41 @@ input {
   }
 }
 
+.ui-btn {
+
+  display: inline-block;
+  background-color: rgba(0,0,0,.75);
+  color: white;
+  border: 1px solid black;
+  border-radius: 6px;
+
+  padding: 0 20px;
+  font-size: 2em;
+  text-align: center;
+  vertical-align: middle;
+
+  .glyph {
+    font-size: 3em;
+    vertical-align: middle;
+  }
+
+  &.save {
+    display: block;
+    width: 150px;
+    padding: 0 20px;
+    margin: 20px auto;
+
+    .glyph {
+      position: relative;
+      top: 5px;
+    }
+  }
+
+  &:hover {
+    background-color: rgba(0,0,0,1);
+  }
+}
+
 header {
 
   position: relative;
@@ -141,41 +176,6 @@ footer {
       font-size: 2em;
       vertical-align: middle;
     }
-  }
-}
-
-.ui-btn {
-
-  display: inline-block;
-  background-color: rgba(0,0,0,.75);
-  color: white;
-  border: none;
-  border-radius: 6px;
-
-  padding: 0 20px;
-  font-size: 2em;
-  text-align: center;
-  vertical-align: middle;
-
-  .glyph {
-    font-size: 3em;
-    vertical-align: middle;
-  }
-
-  &.save {
-    display: block;
-    width: 150px;
-    padding: 0 20px;
-    margin: 20px auto;
-
-    .glyph {
-      position: relative;
-      top: 5px;
-    }
-  }
-
-  &:hover {
-    background-color: rgba(0,0,0,1);
   }
 }
 
@@ -263,6 +263,8 @@ footer {
       overflow: hidden;
 
       ul {
+
+        position: relative;
         list-style: none;
         height: 100%;
         padding: 0;
@@ -502,6 +504,10 @@ button.facebook-login {
 
             width: 150px;
 
+            .title {
+              font-size: 2em;
+            }
+
             .celcius {
               position: relative;
               top: -20px;
@@ -512,7 +518,7 @@ button.facebook-login {
       }
 
       .temperature-selector {
-        margin-left: -20px;
+        margin-left: -10px;
       }
 
       .weather-selector {

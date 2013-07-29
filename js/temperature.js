@@ -3,6 +3,8 @@ _W.TemperatureSelector = {};
 // TEMP
 (function() {
 
+  localStorage.clear();
+
   _W.TemperatureSelector = function init_TemperatureSelector ( $el, dataKey ) {
 
     $el.each(
@@ -26,6 +28,7 @@ _W.TemperatureSelector = {};
         $next.click( next );
 
         $frame.bind('mousewheel DOMMouseScroll MozMousePixelScroll', onScroll );
+        $container.swipe({"swipeStatus": onSwipeStatus });
 
         if ( Modernizr.touch ) {
 
@@ -33,10 +36,6 @@ _W.TemperatureSelector = {};
             e.preventDefault();
             e.stopPropagation();
           });
-
-          $frame.bind('touchstart', onTouchstart );
-          $frame.bind('touchmove',  onTouchmove );
-          $frame.bind('touchend',   onTouchend );
         }
 
         goto ( value );
@@ -89,40 +88,33 @@ _W.TemperatureSelector = {};
           e.stopPropagation();
 
           if ( e.originalEvent.wheelDelta || e.originalEvent.detail )
-            dir = e.originalEvent.wheelDelta || -e.originalEvent.detail;
+            dir = e.originalEvent.wheelDelta || - e.originalEvent.detail;
           if ( dir < 0 )
             next();
           else if ( dir > 0 )
             prev();
         };
 
-        // TOUCH
-        var firstTouch           = null
-          , startingScrollOffset = null
-          ;
+        var initial = {};
+        function onSwipeStatus ( e, phase, direction, distance, duration, fingerCount  ) {
 
-        function onTouchstart ( e ) {
+          if ( phase == 'start' ) {
 
-          $frame.addClass('touch-start');
+            initial['touch'] = { "x": e.x, "y": e.y }
+            initial['value'] = value;
 
-          firstTouch           = e.changedTouches[0];
-          startingScrollOffset = $frame.scrollLeft();
-        }
+            return; // EXIT
+          }
 
-        function onTouchmove ( e ) {
+          value = initial['value'] + ( e.x - initial['touch'].x );
+          goto( value );
 
-          $frame.addClass('touch-move');
+          if ( phase == 'end' || phase == 'cancel' ) {
 
-          currentTouch = e.changedTouches[0];
-          // slide( firstTouch.pageX - currentTouch.pageX );
-        }
-
-        function onTouchend ( e ) {
-
-          $frame.removeClass('touch-start touch-move');
-
-          firstTouch           = null;
-          startingScrollOffset = null;
+            initial['touch'] = { "x": null, "y": null };
+            initial['value'] = null;
+            return; // EXIT
+          }
         }
       }
     );
