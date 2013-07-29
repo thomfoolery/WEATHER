@@ -170,7 +170,7 @@ $.when(
 
       var data = {};
 
-      if ( FB.getLoginStatus() === 'connected' ) {
+      if ( FB.getAuthResponse() ) {
         data['loginType'] = loginType;
         data['id']        = ID;
       }
