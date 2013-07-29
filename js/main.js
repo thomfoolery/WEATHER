@@ -245,8 +245,9 @@ $.when(
           console.log('Good to see you, ' + response.name + '.');
 
           var $btn = $('<button class="ui-btn"/>')
+                      .txt( response.name )
                       .append('<img src="' + response.link + '/picture' + '" />')
-                      .txt( response.name );
+            ;
 
           $('.facebook-login').replaceWith( $btn );
         });
