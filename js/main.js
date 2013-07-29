@@ -56,6 +56,8 @@ $.when(
       , cardWidth
 
       , isAnimating = false
+      , loginType
+      , ID
       ;
 
     for ( var i = 0; i < 7; i++ ) {
@@ -161,6 +163,15 @@ $.when(
 
       var data = {};
 
+      if ( FB.getLoginStatus() === 'connected' ) {
+        data['loginType'] = loginType;
+        data['id']        = ID;
+      }
+      else {
+        FB.login();
+        return;
+      }
+
       for ( var i in window.localStorage ) {
         data[ i ] = window.localStorage[ i ];
       }
@@ -216,8 +227,12 @@ $.when(
 
           if ( response.status === 'connected' ) {
 
-            FB.api('/me', function(response) { console.log('Good to see you, ' + response.name + '.'); });
-            $('.facebook-login').remove();
+            FB.api('/me', function( response ) { console.log('Good to see you, ' + response.name + '.'); });
+            $('.facebook-login').slideUp();
+
+            loginType = 'facebook';
+            ID        = FB.getUserID();
+
           } else if ( response.status === 'not_authorized' ) {
             FB.login();
           } else {

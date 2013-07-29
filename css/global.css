@@ -51,15 +51,6 @@ header {
   width: 300px;
   margin: 0 auto 25px;
 }
-header button.facebook {
-  display: block;
-  background-color: #3B5998;
-  color: white;
-  width: 100%;
-  height: 50px;
-  line-height: 50px;
-  margin-bottom: 10px;
-}
 header input {
   display: block;
   background-color: rgba(0, 0, 0, 0.75);
@@ -419,7 +410,7 @@ footer .ui-btn .glyph {
   }
   footer,
   #pagination,
-  footer > button {
+  footer > .ui-btn {
     margin: 10px auto;
   }
 }
