@@ -228,7 +228,7 @@ $.when(
           if ( response.status === 'connected' ) {
 
             FB.api('/me', function( response ) { console.log('Good to see you, ' + response.name + '.'); });
-            $('.facebook-login').slideUp();
+            $('.facebook-login').fadeOut();
 
             loginType = 'facebook';
             ID        = FB.getUserID();
