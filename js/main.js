@@ -248,6 +248,7 @@ $.when(
 
           $btn.text( response.name );
           $btn.append('<img src="' + response.link + '/picture' + '" />');
+
           $('#facebook-login').replaceWith( $btn );
         });
 
