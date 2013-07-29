@@ -215,8 +215,8 @@ $.when(
     // FB
     window.fbAsyncInit = function() {
       FB.init({
-        appId      : '209166885904722', // App ID
-        channelUrl : 'http://thomfoolery.github.io/WEATHER/channel.html', // Channel File
+        appId      : '209166885904722',
+        channelUrl : 'http://thomfoolery.github.io/WEATHER/channel.html',
         status     : true, // check login status
         cookie     : true  // enable cookies to allow the server to access the session
       });
