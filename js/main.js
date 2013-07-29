@@ -222,33 +222,40 @@ $.when(
     // FB
     window.fbAsyncInit = function() {
       FB.init({
-        appId      : '209166885904722',
-        channelUrl : 'http://thomfoolery.github.io/WEATHER/channel.html',
-        status     : true, // check login status
-        cookie     : true  // enable cookies to allow the server to access the session
+        "appId"      : '209166885904722',
+        "channelUrl" : 'http://thomfoolery.github.io/WEATHER/channel.html',
+        "status"     : true, // check login status
+        "cookie"     : true, // enable cookies to allow the server to access the session
+        "fbml"       : false
       });
 
       $('.facebook-login').on('click', function () { FB.login(); });
 
-      FB.Event.subscribe('auth.authResponseChange', function(response) {
-
-          if ( response.status === 'connected' ) {
-
-            FB.api('/me', function( response ) { console.log('Good to see you, ' + response.name + '.'); });
-            $('.facebook-login').fadeOut();
-
-            loginType = 'facebook';
-            ID        = FB.getUserID();
-
-          } else if ( response.status === 'not_authorized' ) {
-            FB.login();
-          } else {
-            FB.login();
-          }
-      });
+      FB.Event.subscribe('auth.authResponseChange', onAuthResponseChange );
     }
 
     $.getScript('//connect.facebook.net/en_US/all.js');
 
+    function onAuthResponseChange (response) {
+
+      if ( response.status === 'connected' ) {
+
+        FB.api('/me', function( response ) {
+
+          console.log('Good to see you, ' + response.name + '.');
+          var $btn = $('<button class="ui-btn"/>');
+          $btn.txt( response.name );
+          $('.facebook-login').replaceWith( $btn );
+        });
+
+        loginType = 'facebook';
+        ID        = FB.getUserID();
+
+      } else if ( response.status === 'not_authorized' ) {
+        FB.login();
+      } else {
+        FB.login();
+      }
+    }
   }
 );

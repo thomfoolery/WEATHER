@@ -1,3 +1,7 @@
+@fb-color: #3f5a93;
+
+
+
 html,
 body {
   position: relative;
@@ -414,7 +418,7 @@ footer {
 
 button.facebook-login {
 
-  .gradient( #3B5998, #3B5998, lighten( #3B5998, 10% ) );
+  .gradient( @fb-color, @fb-color, lighten( @fb-color, 10% ) );
 
   display: block;
   color: white;
@@ -427,8 +431,14 @@ button.facebook-login {
 
   font-size: 1.4em;
 
+  img {
+    position: relative;
+    top: -3px;
+    margin-right: 10px;
+  }
+
   strong {
-    font-size: 1.4em;
+    font-size: 1.2em;
   }
 }
 
