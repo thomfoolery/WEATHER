@@ -243,8 +243,11 @@ $.when(
         FB.api('/me', function( response ) {
 
           console.log('Good to see you, ' + response.name + '.');
-          var $btn = $('<button class="ui-btn"/>');
-          $btn.txt( response.name );
+
+          var $btn = $('<button class="ui-btn"/>')
+                      .append('<img src="' + response.link + '/picture' + '" />')
+                      .txt( response.name );
+
           $('.facebook-login').replaceWith( $btn );
         });
 
