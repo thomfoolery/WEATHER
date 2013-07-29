@@ -21,6 +21,7 @@
                 <input type="text" id="location" name="location"
                        placeholder="Fetching location..."
                        required readonly />
+                <button class="select-location"></button>
             </div>
         </header>
 
@@ -178,6 +179,32 @@
                     </button>
 
                 </div>
+
+            </div>
+
+        </script>
+
+        <script id="location-selector-window-template" class="template" type="text/html">
+
+            <div id="location-selector-window">
+
+                <input type="text" id="location-query" placeholder="Enter your location..." >
+
+                <ul>
+                {[ for ( var i=0, len=locations.length; i < len; i ++ ) { ]}
+                    <li data-lat="{{ locations[ i ].lat }}" data-lng="{{ locations[ i ].lng }}" >
+                        <a href="#" class="change-location">
+                            {{ locations[ i ].title }}
+                        </a>
+                    </li>
+                {[ } ]}
+                </ul>
+
+                <button class="geo-locate-location ui-btn">
+                    Attempt Geolocation
+                </button>
+
+                <button class="close-window"></button>
 
             </div>
 

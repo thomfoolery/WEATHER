@@ -8,6 +8,25 @@ _W.Location = {};
         "lng":    window.localStorage.getItem('location.lng')    || null,
         "string": window.localStorage.getItem('location.string') || null
       }
+
+    , locations = [
+        {
+          "lat":   0,
+          "lng":   0,
+          "title": 'Toronto, ON, Canada'
+        }, {
+          "lat":   0,
+          "lng":   0,
+          "title": 'Vancouver, ON, Canada'
+        }, {
+          "lat":   0,
+          "lng":   0,
+          "title": 'Montreal, ON, Canada'
+        }
+      ]
+
+    , locationSelectorTemplate = _.template( $('#location-selector-window-template').html() )
+    , $locationSelector
     ;
 
   _.each( _P, function( value, key, _P ) {
@@ -15,12 +34,58 @@ _W.Location = {};
     catch ( e ) { _P[ key ] = null; }
   });
 
+  $( document ).on('click', '.select-location', function () {
+
+    if ( ! $locationSelector ) {
+
+      $locationSelectorMask = $('<div id="location-selector-window-mask"/>')
+      $locationSelector     = $( locationSelectorTemplate({ "locations": locations }) );
+
+      $locationSelector.find('.close-window').on('click', closeLocationSelector );
+
+      $locationSelectorMask.hide();
+      $locationSelector    .hide();
+
+      $('body').append( $locationSelectorMask, $locationSelector )
+    }
+
+    $locationSelectorMask.fadeIn();
+    $locationSelector    .fadeIn();
+
+  });
+
+  $( document ).on('click', '.change-location', function ( e ) {
+
+    var $target = $( e.currentTarget );
+
+    _P.lat    = $target.data('lat');
+    _P.lng    = $target.data('lng');
+    _P.string = $target.text().trim();
+
+    $('#location').val( _P.string );
+
+    closeLocationSelector();
+
+  });
+
+  $( document ).on('click', '.geo-locate-location', refresh );
+
+  function closeLocationSelector () {
+
+    $locationSelectorMask.fadeOut();
+    $locationSelector    .fadeOut();
+  }
+
   refresh();
   function refresh () {
+
     if ( ! _P.lat || ! _P.lng || ! _P.string && navigator.geolocation )
       navigator.geolocation.getCurrentPosition( setGeoLocation );
     else
       $('#location').val( _P.string );
+
+    if ( $locationSelector )
+      closeLocationSelector();
   }
 
   $('#location-input-wrapper button').click( function () {

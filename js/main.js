@@ -175,7 +175,14 @@ $.when(
         data['id']        = ID;
       }
       else {
-        FB.login();
+
+        if ( _W.isMobile ) {
+          var permissionUrl = "https://m.facebook.com/dialog/oauth?client_id=" + 209166885904722 + "&response_type=code&redirect_uri=" + encodeURI('http://thomfoolery.github.io/WEATHER/index.html');
+          window.location = permissionUrl;
+        }
+        else
+          FB.login();
+
         return;
       }
 
