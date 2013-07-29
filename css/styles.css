@@ -1551,6 +1551,21 @@ footer .ui-btn .glyph {
 #facebook-login strong {
   font-size: 1.2em;
 }
+#account {
+  background: #3f5a93;
+  background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #3f5a93), color-stop(1, #5171b4));
+  background: -ms-linear-gradient(bottom, #3f5a93, #5171b4);
+  background: -moz-linear-gradient(center bottom, #3f5a93 0%, #5171b4 100%);
+  display: block;
+  color: white;
+  width: 100%;
+  height: 50px;
+  line-height: 50px;
+  border: 1px solid #344e86;
+  margin-bottom: 10px;
+  text-shadow: 0 1px 3px black;
+  font-size: 1.4em;
+}
 #account .profile-picture {
   border-radius: 50%;
 }

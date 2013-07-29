@@ -229,7 +229,7 @@ $.when(
         "fbml"       : false
       });
 
-      $('.facebook-login').on('click', function () { FB.login(); });
+      $('#facebook-login').on('click', function () { FB.login(); });
 
       FB.Event.subscribe('auth.authResponseChange', onAuthResponseChange );
     }
