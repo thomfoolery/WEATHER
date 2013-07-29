@@ -1347,7 +1347,7 @@ footer .ui-btn .glyph {
 }
 .card .input-wrapper input {
   width: 100%;
-  background-color: rgba(0, 0, 0, 0.75);
+  background-color: black;
   color: #999;
   padding: 20px 0 20px;
   border-radius: 6px 6px 0 0;
