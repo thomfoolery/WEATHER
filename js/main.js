@@ -166,13 +166,23 @@ $.when(
 
     }
 
+
+    // SEND
     function onSubmit ( e ) {
 
-      var data = {};
+      var data  = {}
+        , $card = $cards.eq( index )
+        ;
 
       if ( FB.getAuthResponse() ) {
-        data['loginType'] = loginType;
-        data['id']        = ID;
+
+        data['timestamp']   = Date().now();
+        data['loginType']   = loginType;
+        data['id']          = ID;
+
+        data['date']        = $card.find('[name=date]').val();
+        data['weather']     = $card.find('[name=weather]').val();
+        data['temperature'] = $card.find('[name=temperature]').val();
       }
       else {
 
