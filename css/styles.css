@@ -1551,6 +1551,9 @@ footer .ui-btn .glyph {
 #facebook-login strong {
   font-size: 1.2em;
 }
+#account .profile-picture {
+  border-radius: 50%;
+}
 #ui-datepicker-div {
   background-color: white;
   border: 1px solid #666;

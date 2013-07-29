@@ -244,10 +244,8 @@ $.when(
 
           console.log('Good to see you, ' + response.name + '.');
 
-          var $btn = $('<button class="ui-btn"/>');
-
-          $btn.text( response.name );
-          $btn.append('<img src="' + response.link + '/picture' + '" />');
+          var $btn = $('<button id="account" class="ui-btn">' + response.name + '</button>');
+          $btn.append('<img src="' + response.link + '/picture' + '" class="profile-picture" />');
 
           $('#facebook-login').replaceWith( $btn );
         });
