@@ -1569,7 +1569,7 @@ footer .ui-btn .glyph {
 #account .profile-picture {
   width: 30px;
   border: 2px solid white;
-  border-radius: 50%;
+  border-radius: 6px;
   margin-right: 10px;
 }
 #ui-datepicker-div {
