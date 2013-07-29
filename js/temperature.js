@@ -17,7 +17,7 @@ _W.TemperatureSelector = {};
           , $prev      = $container.find('.prev')
           , $next      = $container.find('.next')
 
-          , value      = parseInt( ( window.localStorage.getItem( dataKey ) || 0 ) )
+          , value      = parseInt( window.localStorage.getItem( dataKey ) )
           , max        = $value.data('max')
           , min        = $value.data('min')
           ;
@@ -36,6 +36,7 @@ _W.TemperatureSelector = {};
           });
         }
 
+        if ( isNaN( value ) ) value = 0;
         goto ( value );
 
         function prev ( e ) {
