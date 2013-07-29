@@ -201,7 +201,7 @@ $.when(
       $main.css('paddingRight', paddingSide + 'px');
     }
 
-    // FaceB
+    // FB
     window.fbAsyncInit = function() {
       FB.init({
         appId      : '209166885904722', // App ID
@@ -213,6 +213,7 @@ $.when(
       $('.facebook-login').on('click', function () { FB.login(); });
 
       FB.Event.subscribe('auth.authResponseChange', function(response) {
+
           if ( response.status === 'connected' ) {
             FB.api('/me', function(response) { console.log('Good to see you, ' + response.name + '.'); });
             $('.facebook-login').remove();
