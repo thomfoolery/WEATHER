@@ -64,8 +64,27 @@ header {
 
   position: relative;
   width: 300px;
-  height: 50px;
   margin: 0 auto 25px;
+
+  button.facebook-login {
+
+    .gradient( #3B5998, #3B5998, lighten( #3B5998, 10% ) );
+
+    display: block;
+    color: white;
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    border: 1px solid darken( #3B5998, 5% );
+    margin-bottom: 10px;
+    text-shadow: 0 1px 3px black;
+
+    font-size: 1.4em;
+
+    strong {
+      font-size: 1.4em;
+    }
+  }
 
   input {
     display: block;
@@ -127,6 +146,7 @@ footer {
   }
 
   .ui-btn {
+
     display: block;
     height: 50px;
     line-height: 50px;
@@ -135,6 +155,7 @@ footer {
     margin: 25px 0;
     width: 100%;
     font-size: 2em;
+    text-align: center;
 
     .glyph {
       font-size: 2em;
@@ -522,7 +543,7 @@ footer {
 
   footer,
   #pagination,
-  footer > button {
+  footer > .ui-btn {
     margin: 10px auto;
   }
 }
