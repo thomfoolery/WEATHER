@@ -215,6 +215,7 @@ $.when(
       FB.Event.subscribe('auth.authResponseChange', function(response) {
 
           if ( response.status === 'connected' ) {
+
             FB.api('/me', function(response) { console.log('Good to see you, ' + response.name + '.'); });
             $('.facebook-login').remove();
           } else if ( response.status === 'not_authorized' ) {
