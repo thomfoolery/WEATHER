@@ -1580,7 +1580,7 @@ footer .ui-btn .glyph {
   background: -moz-linear-gradient(center bottom, #3f5a93 0%, #5171b4 100%);
   display: block;
   color: white;
-  width: 300%;
+  width: 300px;
   height: 50px;
   line-height: 50px;
   border: 1px solid #344e86;
@@ -1614,8 +1614,11 @@ footer .ui-btn .glyph {
 }
 #account-details .value ul {
   list-style: none;
-  padding: 0 0 0 50px;
+  padding: 0;
   margin: 0;
+}
+#account-details .value ul li {
+  font-size: .8em;
 }
 #account-details .score,
 #account-details .accurancy {
