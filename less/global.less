@@ -474,12 +474,12 @@ footer {
 
   display: block;
   color: white;
-  width: 100%;
+  width: 300%;
   height: 50px;
   line-height: 50px;
   border: 1px solid darken( #3B5998, 5% );
   border-radius: 6px 6px 0 0;
-  margin-bottom: 20px;
+  margin: 0 -20px 20px;
 
   text-shadow: 0 1px 3px black;
   font-size: 1.4em;
@@ -498,7 +498,7 @@ footer {
 
   background-color: rgba(255,255,255,.75);
   padding: 20px 0;
-  border-radius: 0 0 6px 6px;
+  border-radius:; 6px 6px;
   text-align: center;
 
   .title {
@@ -515,6 +515,16 @@ footer {
       padding: 0 0 0 50px;
       margin: 0;
     }
+  }
+
+  .score,
+  .accurancy {
+    float: left;
+    width: 50%;
+  }
+
+  .streaks {
+    clear: both;
   }
 }
 
