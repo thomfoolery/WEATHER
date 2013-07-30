@@ -1569,7 +1569,7 @@ footer .ui-btn .glyph {
   font-size: 1.2em;
 }
 #facebook-logout {
-  margin: 20px -20px -20px;
+  margin: 20px 0 0;
 }
 #account-header {
   background: #3f5a93;
@@ -1606,8 +1606,14 @@ footer .ui-btn .glyph {
   font-weight: bold;
 }
 #account-details .value {
-  font-size: 2em;
+  margin-bottom: 20px;
+  font-size: 3em;
   font-weight: normal;
+}
+#account-details .value ul {
+  list-style: none;
+  padding: 0 0 0 50px;
+  margin: 0;
 }
 #location-selector-window-mask {
   position: fixed;
