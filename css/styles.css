@@ -1571,7 +1571,7 @@ footer .ui-btn .glyph {
 #facebook-logout {
   width: 300px;
   border-radius: 0 0 6px 6px;
-  margin: 20px -20px 0;
+  margin: 20px 0 0;
 }
 #account-header {
   background: #3f5a93;
@@ -1585,7 +1585,7 @@ footer .ui-btn .glyph {
   line-height: 50px;
   border: 1px solid #344e86;
   border-radius: 6px 6px 0 0;
-  margin: 0 -20px 20px;
+  margin: 0 0 20px;
   text-shadow: 0 1px 3px black;
   font-size: 1.4em;
 }
@@ -1599,7 +1599,6 @@ footer .ui-btn .glyph {
 }
 #account-details {
   background-color: rgba(255, 255, 255, 0.75);
-  padding: 0 20px;
   border-radius: 6px;
   text-align: center;
 }
