@@ -192,8 +192,8 @@
 
                 <ul>
                 {[ for ( var i=0, len=locations.length; i < len; i ++ ) { ]}
-                    <li data-lat="{{ locations[ i ].lat }}" data-lng="{{ locations[ i ].lng }}" >
-                        <a href="#" class="change-location">
+                    <li>
+                        <a href="#" class="change-location" data-lat="{{ locations[ i ].lat }}" data-lng="{{ locations[ i ].lng }}" >
                             {{ locations[ i ].title }}
                         </a>
                     </li>
@@ -201,10 +201,44 @@
                 </ul>
 
                 <button class="geo-locate-location ui-btn">
-                    Attempt Geolocation
+                    Use Geolocation
                 </button>
 
                 <button class="close-window"></button>
+
+            </div>
+
+        </script>
+
+        <script id="account-details-tamplate" class="template" type="text/html">
+
+            <div id="account-details">
+
+                <div class="score">
+                    <div class="title">
+                        Score
+                    </div>
+                    <div class="value">
+                        {{ score }}
+                    </div>
+                </div>
+
+                <div class="streak">
+                    <div class="title">
+                        Streaks
+                    </div>
+                    <div class="value">
+                        <ul>
+                        {[ for ( var i = 0, len = streaks.length ) { ]}
+                            <li>{{ streaks[ i ] }}</li>
+                        {[ } ]}
+                        </ul>
+                    </div>
+                </div>
+
+                <button id="facebook-logout" class="ui-btn">
+                    Log out of <strong>Facbook</strong>
+                </button>
 
             </div>
 

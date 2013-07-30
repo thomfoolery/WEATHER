@@ -4,23 +4,23 @@ _W.Location = {};
 (function() {
 
   var _P = {
-        "lat":    window.localStorage.getItem('location.lat')    || null,
-        "lng":    window.localStorage.getItem('location.lng')    || null,
+        "lat":    parseFloat( window.localStorage.getItem('location.lat') ),
+        "lng":    parseFloat( window.localStorage.getItem('location.lng') ),
         "string": window.localStorage.getItem('location.string') || null
       }
 
     , locations = [
         {
-          "lat":   0,
-          "lng":   0,
+          "lat":   1,
+          "lng":   1,
           "title": 'Toronto, ON, Canada'
         }, {
-          "lat":   0,
-          "lng":   0,
+          "lat":   1,
+          "lng":   1,
           "title": 'Vancouver, ON, Canada'
         }, {
-          "lat":   0,
-          "lng":   0,
+          "lat":   1,
+          "lng":   1,
           "title": 'Montreal, ON, Canada'
         }
       ]
@@ -29,10 +29,10 @@ _W.Location = {};
     , $locationSelector
     ;
 
-  _.each( _P, function( value, key, _P ) {
-    try { _P[ key ] = JSON.parse( value ); }
-    catch ( e ) { _P[ key ] = null; }
-  });
+  if ( isNaN( _P.lat ) ) _P.lat = null;
+  if ( isNaN( _P.lng ) ) _P.lng = null;
+
+  refresh();
 
   $( document ).on('click', '.select-location', function () {
 
@@ -62,13 +62,20 @@ _W.Location = {};
     _P.lng    = $target.data('lng');
     _P.string = $target.text().trim();
 
+    window.localStorage.setItem('location.lat',    _P.lat );
+    window.localStorage.setItem('location.lng',    _P.lng );
+    window.localStorage.setItem('location.string', _P.string );
+
     $('#location').val( _P.string );
 
     closeLocationSelector();
 
   });
 
-  $( document ).on('click', '.geo-locate-location', refresh );
+  $( document ).on('click', '.geo-locate-location', function () {
+    if ( navigator.geolocation )
+      navigator.geolocation.getCurrentPosition( geoLocate );
+  });
 
   function closeLocationSelector () {
 
@@ -76,22 +83,16 @@ _W.Location = {};
     $locationSelector    .fadeOut();
   }
 
-  refresh();
   function refresh () {
 
-    if ( ! _P.lat || ! _P.lng || ! _P.string && navigator.geolocation )
-      navigator.geolocation.getCurrentPosition( setGeoLocation );
+    if (( ! _P.lat || ! _P.lng || ! _P.string ) && navigator.geolocation )
+      navigator.geolocation.getCurrentPosition( geoLocate );
     else
       $('#location').val( _P.string );
 
     if ( $locationSelector )
       closeLocationSelector();
   }
-
-  $('#location-input-wrapper button').click( function () {
-    if ( navigator.geolocation )
-      navigator.geolocation.getCurrentPosition( setGeoLocation );
-  });
 
   _W.Location.refresh = refresh;
 
@@ -107,7 +108,7 @@ _W.Location = {};
     return _P.lng;
   };
 
-  function setGeoLocation ( position ) {
+  function geoLocate ( position ) {
 
     _P.lat = position.coords.latitude;
     _P.lng = position.coords.longitude;
@@ -128,14 +129,15 @@ _W.Location = {};
 
           if ( Modernizr.localstorage ) {
 
-            window.localStorage.setItem('location.lat', _P.lat );
-            window.localStorage.setItem('location.lng', _P.lng );
+            window.localStorage.setItem('location.lat',    _P.lat );
+            window.localStorage.setItem('location.lng',    _P.lng );
             window.localStorage.setItem('location.string', _P.string );
           }
 
           $('#location').val( _P.string );
+          closeLocationSelector();
 
-          break ;
+          break;
         }
       }
     }

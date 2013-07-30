@@ -1208,7 +1208,9 @@ body {
   user-select: none;
 }
 body {
-  background: url(http://upload.wikimedia.org/wikipedia/commons/d/dc/Sky-View_ForestWander.JPG) center no-repeat;
+  background: url(http://www.zastavki.com/pictures/1920x1200/2009/Nature_Fields_Green_Horizon_015894_.jpg) center no-repeat;
+  baclground: url(http://upload.wikimedia.org/wikipedia/commons/d/dc/Sky-View_ForestWander.JPG) center no-repeat;
+  background: url(http://www.wallpaperhi.com/thumbnails/detail/20120313/sunrise%20clouds%20landscapes%20nature%20horizon%20fields%20plains%20sunbeams%203543x2362%20wallpaper_www.wallpaperhi.com_26.jpg) center no-repeat;
   background-size: cover;
   background-attachment: fixed;
   padding: 25px 0;
@@ -1563,7 +1565,7 @@ footer .ui-btn .glyph {
 #facebook-login strong {
   font-size: 1.2em;
 }
-#account {
+#account-header {
   background: #3f5a93;
   background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #3f5a93), color-stop(1, #5171b4));
   background: -ms-linear-gradient(bottom, #3f5a93, #5171b4);
@@ -1574,15 +1576,23 @@ footer .ui-btn .glyph {
   height: 50px;
   line-height: 50px;
   border: 1px solid #344e86;
+  border-radius: 6px 6px 0 0;
   margin-bottom: 10px;
   text-shadow: 0 1px 3px black;
   font-size: 1.4em;
 }
-#account .profile-picture {
+#account-header .profile-picture {
+  position: relative;
+  top: -3px;
   width: 30px;
   border: 2px solid white;
   border-radius: 6px;
   margin-right: 10px;
+}
+#account-details {
+  background-color: rgba(255, 255, 255, 0.75);
+  padding: 20px;
+  border-radius: 0 0 6px 6px;
 }
 #location-selector-window-mask {
   position: fixed;
