@@ -210,7 +210,7 @@
 
         </script>
 
-        <script id="account-details-tamplate" class="template" type="text/html">
+        <script id="account-details-template" class="template" type="text/html">
 
             <div id="account-details">
 
@@ -229,7 +229,7 @@
                     </div>
                     <div class="value">
                         <ul>
-                        {[ for ( var i = 0, len = streaks.length ) { ]}
+                        {[ for ( var i = 0, len = streaks.length; i < len; i ++ ) { ]}
                             <li>{{ streaks[ i ] }}</li>
                         {[ } ]}
                         </ul>

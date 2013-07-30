@@ -4,7 +4,7 @@
   var loginType
     , ID
 
-    , accountDetailsTemplate = _.template( $('#account-details-template').html() );
+    , accountDetailsTemplate = _.template( $('#account-details-template').html().trim() );
     ;
 
   $('footer .submit').click( onSubmit );
@@ -30,10 +30,8 @@
 
       if ( _W.isMobile )
         window.location = "https://m.facebook.com/dialog/oauth?client_id=" + 209166885904722 + "&response_type=code&redirect_uri=" + encodeURI('http://thomfoolery.github.io/WEATHER/index.html');
-
       else
         FB.login();
-
       return;
     }
 
@@ -56,10 +54,8 @@
 
     $('#facebook-login').on('click', function () {
 
-      if ( _W.isMobile ) {
-        window.location = "https://m.facebook.com/dialog/oauth?client_id=" + 209166885904722 + "&response_type=code&redirect_uri=" + encodeURI('http://thomfoolery.github.io/WEATHER/index.html');
-        return;
-      }
+      if ( _W.isMobile )
+        return window.location = "https://m.facebook.com/dialog/oauth?client_id=" + 209166885904722 + "&response_type=code&redirect_uri=" + encodeURI('http://thomfoolery.github.io/WEATHER/index.html');
       else
         FB.login();
     });
@@ -96,11 +92,5 @@
       ID        = FB.getUserID();
 
     }
-    // else if ( response.status === 'not_authorized' ) {
-    //   // FB.login();
-    // }
-    // else {
-    //   // FB.login();
-    // }
   }
 })();
