@@ -4,7 +4,7 @@
   var loginType
     , ID
 
-    , accountDetailsTemplate = _.template( $('#account-details-template') );
+    , accountDetailsTemplate = _.template( $('#account-details-template').html() );
     ;
 
   $('footer .submit').click( onSubmit );
