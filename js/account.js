@@ -56,8 +56,11 @@
 
       if ( _W.isMobile )
         return window.location = "https://m.facebook.com/dialog/oauth?client_id=" + 209166885904722 + "&response_type=code&redirect_uri=" + encodeURI('http://thomfoolery.github.io/WEATHER/index.html');
-      else
-        FB.login();
+      FB.login();
+    });
+
+    $('#facebook-logout').on('click', function () {
+      FB.logout();
     });
 
     FB.Event.subscribe('auth.authResponseChange', onAuthResponseChange );
@@ -68,6 +71,9 @@
   function onAuthResponseChange (response) {
 
     if ( response.status === 'connected' ) {
+
+      loginType = 'facebook';
+      ID        = FB.getUserID();
 
       FB.api('/me', function( response ) {
 
@@ -86,10 +92,6 @@
         $('#facebook-login').replaceWith( $accountDetails );
 
       });
-
-      loginType = 'facebook';
-      ID        = FB.getUserID();
-
     }
   }
 })();
