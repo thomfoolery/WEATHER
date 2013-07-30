@@ -73,8 +73,11 @@ _W.Location = {};
   });
 
   $( document ).on('click', '.geo-locate-location', function () {
-    if ( navigator.geolocation )
-      navigator.geolocation.getCurrentPosition( geoLocate );
+
+    if ( ! navigator.geolocation ) return; // EXIT
+
+    navigator.geolocation.getCurrentPosition( geoLocate );
+    $('#location').val('');
   });
 
   function closeLocationSelector () {
@@ -85,8 +88,10 @@ _W.Location = {};
 
   function refresh () {
 
-    if (( ! _P.lat || ! _P.lng || ! _P.string ) && navigator.geolocation )
+    if (( ! _P.lat || ! _P.lng || ! _P.string ) && navigator.geolocation ) {
       navigator.geolocation.getCurrentPosition( geoLocate );
+      $('#location').val('');
+    }
     else
       $('#location').val( _P.string );
 
