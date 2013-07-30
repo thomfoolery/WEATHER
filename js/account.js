@@ -84,7 +84,7 @@
                 "username":    response.name,
                 "accuracy":    45,
                 "score":       12 * 1000,
-                "streaks":     ['7 days over 50%', '14 days 23%', '1 month 45%']
+                "streaks":     ['7 days over 50%', '14 days 23%', '1 month 20%']
               })
             )
           ;
