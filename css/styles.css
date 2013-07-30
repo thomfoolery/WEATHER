@@ -1580,12 +1580,12 @@ footer .ui-btn .glyph {
   background: -moz-linear-gradient(center bottom, #3f5a93 0%, #5171b4 100%);
   display: block;
   color: white;
-  width: 100%;
+  width: 300%;
   height: 50px;
   line-height: 50px;
   border: 1px solid #344e86;
   border-radius: 6px 6px 0 0;
-  margin-bottom: 20px;
+  margin: 0 -20px 20px;
   text-shadow: 0 1px 3px black;
   font-size: 1.4em;
 }
@@ -1599,8 +1599,8 @@ footer .ui-btn .glyph {
 }
 #account-details {
   background-color: rgba(255, 255, 255, 0.75);
-  padding: 20px 0;
-  border-radius: 0 0 6px 6px;
+  padding: 0 20px;
+  border-radius: 6px;
   text-align: center;
 }
 #account-details .title {
@@ -1616,6 +1616,14 @@ footer .ui-btn .glyph {
   list-style: none;
   padding: 0 0 0 50px;
   margin: 0;
+}
+#account-details .score,
+#account-details .accurancy {
+  float: left;
+  width: 50%;
+}
+#account-details .streaks {
+  clear: both;
 }
 #location-selector-window-mask {
   position: fixed;
