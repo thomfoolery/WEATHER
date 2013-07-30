@@ -74,8 +74,10 @@
         console.log('Good to see you, ' + response.name + '.');
 
         var $accountDetails = $( accountDetailsTemplate({
-                "score":  12 * 1000,
-                "streaks": ['7 days over 50%', '14 days 23%', '1 month 45%']
+                "fb_username": response.username,
+                "username":    response.name,
+                "score":       12 * 1000,
+                "streaks":     ['7 days over 50%', '14 days 23%', '1 month 45%']
               })
             )
           ;
