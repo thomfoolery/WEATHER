@@ -76,7 +76,7 @@
         var $accountDetails = $( accountDetailsTemplate({
                 "fb_username": response.username,
                 "username":    response.name,
-                "accurancy":   45,
+                "accuracy":    45,
                 "score":       12 * 1000,
                 "streaks":     ['7 days over 50%', '14 days 23%', '1 month 45%']
               })
