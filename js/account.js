@@ -73,19 +73,15 @@
 
         console.log('Good to see you, ' + response.name + '.');
 
-        var $btn = $('<button id="account-header" class="ui-btn">' +
-                      '<img src="http://graph.facebook.com/' + response.username + '/picture" class="profile-picture" />' +
-                      response.name + '</button>'
-                    )
-
-          , $accountDetails = $( accountDetailsTemplate({
+        var $accountDetails = $( accountDetailsTemplate({
                 "score":  12 * 1000,
                 "streaks": ['7 days over 50%', '14 days 23%', '1 month 45%']
               })
-            );
+            )
+          ;
 
-        $('#facebook-login').replaceWith( $btn );
-        $accountDetails.insertAfter( $btn );
+        $('#facebook-login').replaceWith( $accountDetails );
+
       });
 
       loginType = 'facebook';
