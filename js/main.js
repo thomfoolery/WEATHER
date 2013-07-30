@@ -85,7 +85,7 @@ $.when(
     $('footer .prev')  .click( prev );
     $('footer .next')  .click( next );
 
-    $('body').bind('mousewheel DOMMouseScroll MozMousePixelScroll', onScroll );
+    $('#pagination').bind('mousewheel DOMMouseScroll MozMousePixelScroll', onScroll );
     $main.bind("transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd", onTransitionEnd );
 
     goto( 0 );

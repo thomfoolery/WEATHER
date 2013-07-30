@@ -462,6 +462,10 @@ footer {
   }
 }
 
+#facebook-logout {
+  margin: 20px -20px -20px;
+}
+
 #account-header {
 
   .gradient( @fb-color, @fb-color, lighten( @fb-color, 10% ) );
@@ -473,7 +477,7 @@ footer {
   line-height: 50px;
   border: 1px solid darken( #3B5998, 5% );
   border-radius: 6px 6px 0 0;
-  margin-bottom: 10px;
+  margin-bottom: 0;
 
   text-shadow: 0 1px 3px black;
   font-size: 1.4em;
@@ -489,9 +493,20 @@ footer {
 }
 
 #account-details {
+
   background-color: rgba(255,255,255,.75);
   padding: 20px;
   border-radius: 0 0 6px 6px;
+  text-align: center;
+
+  .title {
+    font-size: 2em;
+    font-weight: bold;
+  }
+  .value {
+    font-size: 2em;
+    font-weight: normal;
+  }
 }
 
 #location-selector-window-mask {

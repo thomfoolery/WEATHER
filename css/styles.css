@@ -1542,7 +1542,8 @@ footer .ui-btn .glyph {
 .next .ui-icon {
   background-image: url(../img/icn/arrow-right.png);
 }
-#facebook-login {
+#facebook-login,
+#facebook-logout {
   background: #3f5a93;
   background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #3f5a93), color-stop(1, #5171b4));
   background: -ms-linear-gradient(bottom, #3f5a93, #5171b4);
@@ -1557,13 +1558,18 @@ footer .ui-btn .glyph {
   text-shadow: 0 1px 3px black;
   font-size: 1.4em;
 }
-#facebook-login img {
+#facebook-login img,
+#facebook-logout img {
   position: relative;
   top: -3px;
   margin-right: 10px;
 }
-#facebook-login strong {
+#facebook-login strong,
+#facebook-logout strong {
   font-size: 1.2em;
+}
+#facebook-logout {
+  margin: 20px -20px -20px;
 }
 #account-header {
   background: #3f5a93;
@@ -1577,7 +1583,7 @@ footer .ui-btn .glyph {
   line-height: 50px;
   border: 1px solid #344e86;
   border-radius: 6px 6px 0 0;
-  margin-bottom: 10px;
+  margin-bottom: 0;
   text-shadow: 0 1px 3px black;
   font-size: 1.4em;
 }
@@ -1593,6 +1599,15 @@ footer .ui-btn .glyph {
   background-color: rgba(255, 255, 255, 0.75);
   padding: 20px;
   border-radius: 0 0 6px 6px;
+  text-align: center;
+}
+#account-details .title {
+  font-size: 2em;
+  font-weight: bold;
+}
+#account-details .value {
+  font-size: 2em;
+  font-weight: normal;
 }
 #location-selector-window-mask {
   position: fixed;
