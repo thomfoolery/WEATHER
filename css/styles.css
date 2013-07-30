@@ -1607,6 +1607,7 @@ footer .ui-btn .glyph {
   font-weight: bold;
 }
 #account-details .value {
+  color: #3f5a93;
   margin-bottom: 20px;
   font-size: 3em;
   font-weight: normal;
@@ -1623,6 +1624,10 @@ footer .ui-btn .glyph {
 }
 #account-details .streaks {
   clear: both;
+}
+#account-details .streaks .value {
+  font-size: 1.5em;
+  text-align: left;
 }
 #location-selector-window-mask {
   position: fixed;
